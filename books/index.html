@@ -1,0 +1,1437 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>初读不知书中意，再读已是书中人 | SHIVAKASU</title><meta name="description" content="初读不知书中意，再读已是书中人"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="初读不知书中意，再读已是书中人"><meta name="twitter:description" content="初读不知书中意，再读已是书中人"><meta name="twitter:image" content="http://shivakasu.github.io/img/avatar.jpg"><meta property="og:type" content="website"><meta property="og:title" content="初读不知书中意，再读已是书中人"><meta property="og:url" content="http://shivakasu.github.io/books/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="初读不知书中意，再读已是书中人"><meta property="og:image" content="http://shivakasu.github.io/img/avatar.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://shivakasu.github.io/books/"><link rel="preload" href="/img/back.jpeg" as="image"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: false
+  
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">4</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">2</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div></div><div id="body-wrap"><nav class="not_index_bg" id="nav" style="background-image: url(/img/back.jpeg)"><div id="page_site-info"><div id="site-title"><span class="blogtitle">初读不知书中意，再读已是书中人</span></div></div></nav><main id="content-outer"><div class="layout_page" id="content-inner"><article id="page"><h1>初读不知书中意，再读已是书中人</h1><div class="article-container"><blockquote>
+    <p>又携书剑路茫茫</p>
+</blockquote>
+
+<style>
+    
+.hexo-douban-tabs {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.hexo-douban-tab {
+    padding: 5px;
+}
+
+.hexo-douban-active {
+    background: #657b83;
+    color: #fff;
+}
+
+.hexo-douban-item {
+    padding-bottom: 10px;
+    position: relative;
+    clear: both;
+    min-height: 170px;
+    padding: 10px 0;
+    border-bottom: 1px #ddd solid;
+}
+
+@media screen and (max-width: 600px) {
+    .hexo-douban-item {
+        width: 100%;
+    }
+}
+
+.hexo-douban-picture {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 100px;
+}
+
+.hexo-douban-info {
+    padding-left: 120px;
+}
+
+.hexo-douban-meta {
+    font-size: 12px;
+    padding-right: 10px;
+}
+
+.hexo-douban-comments {
+    font-size: 12px;
+}
+
+.hexo-douban-pagination {
+    margin-top: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.hexo-douban-button {
+    padding: 5px;
+}
+
+.hexo-douban-button:hover {
+    background: #657b83;
+    color: #fff;
+}
+
+.hexo-douban-hide {
+    display: none;
+}
+
+.hexo-douban-show {
+    display: block;
+}
+
+
+</style>
+
+<div class="hexo-douban-tabs">
+    <a class="hexo-douban-tab" id="hexo-douban-tab1" href="javascript:;"
+       rel="external">
+        在读
+        (0)</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab2" href="javascript:;"
+       rel="external">
+        想读
+        (20)</a>
+    <a class="hexo-douban-tab" id="hexo-douban-tab3" href="javascript:;"
+       rel="external">
+        已读
+        (40)</a>
+</div>
+<div>
+    <div id="hexo-douban-item1">
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
+</div>
+    </div>
+    <div id="hexo-douban-item2">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s4473729.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/5253759/"> 中国哲学简史</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  冯友兰 / 涂又光 / 北京大学出版社 / 2010-8 / 33.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2019-12-24
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s11194254.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/11542250/"> 世界经济简史</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [美]龙多·卡梅伦，拉里·尼尔著 / 潘宁等 / 上海译文出版社 / 2012-8 / 48.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2019-12-24
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29287103.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26943161/"> 未来简史</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [以色列] 尤瓦尔·赫拉利 / 林俊宏 / 中信出版集团 / 2017-2 / 68.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-11-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s27814883.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/25985021/"> 人类简史</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [以色列] 尤瓦尔·赫拉利 / 林俊宏 / 中信出版社 / 2014-11 / CNY 68.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-11-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1077102.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1090043/"> 倾城之恋</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  花城出版社 / 1997-3-1 / 11.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-11-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s3814606.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3646172/"> 恶意</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 东野圭吾 / 娄美莲 / 南海出版公司 / 2009-6 / 18.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-11-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1070222.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1008145/"> 围城</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  钱锺书 / 人民文学出版社 / 1991-2 / 19.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-11-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s29398065.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/25928725/"> 导读齐泽克</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (英)托尼·迈尔斯 / 白轻 / 拜德雅丨重庆大学出版社 / 2014-8 / 28.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-10-08
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s29398066.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/25906249/"> 导读尼采</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (英)李·斯平克斯 / 丁岩 / 拜德雅丨重庆大学出版社 / 2014-8 / 28.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-10-08
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s6797803.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/6538958/"> 文人的骨气和底气</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  王家声 编 / 世界知识 / 2011-6 / 28.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-10-07
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s2796174.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2338164/"> 亞洲勃起</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  傑瑞霍普金斯 / 李建興 / 晨星出版社 / 2007.09.06 / NT$280
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-10-07
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s32333797.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1905142/"> 中国意识的危机</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (美)林毓生 / 穆善培 / 贵州人民出版社 / 1988-1 / 2.75元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-10-07
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29848440.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/30285146/"> 百面机器学习</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  诸葛越、葫芦娃 / 人民邮电出版社 / 2018-8-1 / 89.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-17
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s27637475.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26148763/"> 计算的本质</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] Tom Stuart / 张伟 / 人民邮电出版社 / 2014-11 / 69.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-16
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s29370067.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26941639/"> 网络是怎样连接的</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日]户根勤 / 周自恒 / 人民邮电出版社 / 2017-1-1 / CNY 49.00
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-12
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1326871.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1099305/"> 设计模式</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  伽玛 / 机械工业出版社 / 2002-3-1 / 38.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-11
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s29434304.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/27028517/"> 流畅的Python</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [巴西] Luciano Ramalho / 安道、吴珂 / 人民邮电出版社 / 2017-5-15 / 139元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-11
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s28418968.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/26726452/"> 计算机科学导论</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [美]贝赫鲁兹·佛罗赞 / 刘艺、刘哲雨 / 机械工业出版社 / 2015-8-1 / 69.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2018-09-11
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s9085147.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/10537626/"> 倒错的归结</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (日) 折原一 / 曲扬 / 新星出版社 / 2012-5 / 35.00元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2015-02-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s3628082.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1760432/"> 受戒</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  汪曾祺 / 漓江出版社 / 1987-10 / 3.95元
+
+      
+        </div>
+        <div class="hexo-douban-meta">2015-02-22
+      想读 / </div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
+</div>
+
+    </div>
+    <div id="hexo-douban-item3">
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s27069974.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/25737736/"> 一棵树的爱情史</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘醒龙 / 北京十月文艺出版社 / 2013-9 / 32
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1994850.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1822767/"> 凤凰琴</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘醒龙 / 武汉出版社 / 2006-1 / 24.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s6916837.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3851799/"> 天行者</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘醒龙 / 人民文学出版社 / 2009-5 / 18.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s28111905.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/10564071/"> 白鹿原</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  陈忠实 / 人民文学出版社 / 2012-9 / 39.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s26710519.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/24540864/"> 第七天</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  余华 / 新星出版社 / 2013-6 / 29.50元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s4066862.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/4074636/"> 放学后</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  （日）东野圭吾 / 赵峻 / 南海出版公司 / 2010-1 / 20.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★☆☆ 还行</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s27449344.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/10517238/"> 平凡的世界</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  路遥 / 北京出版集团公司,北京十月文艺出版社 / 2012-3-1 / CNY 79.80
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s2611329.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2154960/"> 一个陌生女人的来信</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [奥] 斯台芬·茨威格 / 张玉书 / 上海译文出版社 / 2007-7 / 20.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s3847911.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3803820/"> 人生</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  路遥 / 北京十月文艺出版社 / 2009-5 / 20.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s11162658.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/11503107/"> 魔神的游戏</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (日)岛田庄司 / 林新生 / 新星出版社 / 2012-9-20 / 32.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s22857378.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/20091994/"> 异位</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  （日）岛田庄司 / 林新生 / 新星出版社 / 2012-11 / 38.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s7664966.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/7916085/"> 泪流不止（上、下）</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  (日)岛田庄司 / 袁斌 / 新星出版社 / 2012-3 / 58.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s3829681.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3787195/"> 黑暗坡食人树</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  （日）岛田庄司 / 陈涤 / 新星出版社 / 2009-7 / 32.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s4100902.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/4187219/"> 眩晕</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 云卿 / 新星出版社 / 2010-1 / 32.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s4400836.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3753043/"> 北方夕鹤2/3杀人事件</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 云卿 / 新星出版社 / 2009-6 / 25.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s4540915.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/4898712/"> 奇想·天动</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 林敏生 / 新星出版社 / 2010-8 / 28.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s3421507.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3187750/"> 斜屋犯罪</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 王鹏帆 / 新星出版社 / 2008-9 / 25.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s3683846.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3615048/"> 异邦骑士</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 王鹏帆 / 新星出版社 / 2009-4 / 29.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s9102105.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/10740776/"> 占星术杀人魔法</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  （日）岛田庄司 / 王鹏帆 / 新星出版社 / 2012-5 / 28.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-12-03
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s6987353.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/6880158/"> 陆犯焉识</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  严歌苓 / 作家出版社 / 2011-10 / 35.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s29524800.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1474773/"> 海贼王</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  尾田荣一郎 / 董科 / 浙江人民美术出版社 / 2007-11 / 7.50元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s1436519.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1008357/"> 水浒传（全二册）</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [明] 施耐庵、罗贯中 / 人民文学出版社 / 1997-1 / 50.60元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s23579217.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1013416/"> 雷雨</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  曹禺 / 人民文学出版社 / 1999-05 / 9.20
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s2875823.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1449352/"> 朝花夕拾</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  鲁迅 / 人民文学出版社 / 1972年4月 / 0.25元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s2347590.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2035179/"> 动物农场</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 乔治·奥威尔 / 荣如德 / 上海译文出版社 / 2007-3 / 10.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★☆☆ 还行</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s9137567.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1085799/"> 白鹿原</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  陈忠实 / 人民文学出版社 / 1997-12 / 28.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s2153661.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1045818/"> 苏菲的世界</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  （挪威）乔斯坦·贾德 / 萧宝森 / 作家出版社 / 1999-04 / 26.80元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★☆☆ 还行</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s3668327.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3608208/"> 牧羊少年奇幻之旅</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [巴西] 保罗·柯艾略 / 丁文林 / 南海出版公司 / 2009-3-1 / 25.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1076932.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1019568/"> 三国演义（全二册）</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [明] 罗贯中 / 人民文学出版社 / 1998-05 / 39.50元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s4371408.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/4820710/"> 1984</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 乔治·奥威尔 / 刘绍铭 / 北京十月文艺出版社 / 2010-4-1 / 28.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1790771.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1082334/"> 穆斯林的葬礼</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  霍达 / 北京十月文艺出版社 / 1988-12-1 / 32.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s1242786.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1016003/"> 鲁滨逊漂流记</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [英] 笛福 / 马静 / 广西民族出版社 / 2002-1 / 9.20元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★☆☆ 还行</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s1513425.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1040771/"> 达·芬奇密码</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [美] 丹·布朗 / 朱振武、吴晟、周元晓 / 上海人民出版社 / 2004-2 / 28.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s26012674.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/5363767/"> 三体Ⅲ</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘慈欣 / 重庆出版社 / 2010-11 / 38.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s3078482.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3066477/"> 三体Ⅱ</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘慈欣 / 重庆出版社 / 2008-5 / 32.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-29
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s1144911.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/1200840/"> 平凡的世界（全三部）</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  路遥 / 人民文学出版社 / 2005-1 / 64.00元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-22
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s2768378.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/2567698/"> 三体</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  刘慈欣 / 重庆出版社 / 2008-1 / 23.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-22
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img9.doubanio.com/view/subject/m/public/s3254244.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3211779/"> 嫌疑人X的献身</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 东野圭吾 / 刘子倩 / 南海出版公司 / 2008-9 / 28.00
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-22
+      读过 /  / ★★★☆☆ 还行</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img3.doubanio.com/view/subject/m/public/s4610502.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3259440/"> 白夜行</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 东野圭吾 / 刘姿君 / 南海出版公司 / 2008-9 / 29.80元
+
+      </div>
+        <div class="hexo-douban-meta">2019-11-22
+      读过 /  / ★★★★☆ 推荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-item">
+    <div class="hexo-douban-picture"><img src="/assets/douban-loading.gif" data-src="https://img1.doubanio.com/view/subject/m/public/s3801839.jpg" referrerPolicy="no-referrer" /></div>
+    <div class="hexo-douban-info">
+        <div class="hexo-douban-title"><a target="_blank" href="https://book.douban.com/subject/3187737/"> 占星术杀人魔法</a></div>
+        <div class="hexo-douban-meta">
+        
+  
+  [日] 岛田庄司 / 王鹏帆 / 新星出版社 / 2008-9 / 28.00
+
+      </div>
+        <div class="hexo-douban-meta">2018-02-18
+      读过 /  / ★★★★★ 力荐</div>
+        <div class="hexo-douban-comments">
+  </div>
+    </div>
+</div>
+
+        
+        <div class="hexo-douban-pagination">
+    <a class="hexo-douban-button hexo-douban-firstpage" href="javascript:;"> 首页</a>
+    <a class="hexo-douban-button hexo-douban-previouspage" href="javascript:;">上一页</a>
+    <span class="hexo-douban-pagenum">2 / 3</span>
+    <a class="hexo-douban-button hexo-douban-nextpage" href="javascript:;">下一页</a>
+    <a class="hexo-douban-button hexo-douban-lastpage" href="javascript:;">尾页</a>
+</div>
+    </div>
+
+</div>
+
+<script>
+    /**
+ * Created by myths on 18-2-8.
+ */
+
+Element.prototype.siblings = function () {
+    var siblingElement = [];
+    var sibs = this.parentNode.children;
+    for (var i = 0; i < sibs.length; i++) {
+        if (sibs[i] !== this) {
+            siblingElement.push(sibs[i]);
+        }
+    }
+    return siblingElement;
+};
+function tabClick() {
+    //修改标签样式
+    this.classList.add('hexo-douban-active');
+    var sibs = this.siblings();
+    for (var j = 0; j < sibs.length; j++) {
+        sibs[j].classList.remove('hexo-douban-active');
+    }
+    //显示对应板块
+    var itemId = this.id.replace('tab', 'item');
+    var target = document.getElementById(itemId);
+    target.classList.remove('hexo-douban-hide');
+    target.classList.add('hexo-douban-show');
+    sibs = document.getElementById(itemId).siblings();
+    for (var k = 0; k < sibs.length; k++) {
+        sibs[k].classList.remove('hexo-douban-show');
+        sibs[k].classList.add('hexo-douban-hide');
+    }
+}
+var tabs = document.getElementsByClassName("hexo-douban-tab");
+for (var i = 0; i < tabs.length; i++) {
+    tabs[i].onclick = tabClick;
+    tabs[i].onclick.apply(tabs[i]);
+}
+tabs[2].click();
+
+    var firstpages = document.getElementsByClassName("hexo-douban-firstpage");
+var previouspages = document.getElementsByClassName("hexo-douban-previouspage");
+var nextpages = document.getElementsByClassName("hexo-douban-nextpage");
+var lastpages = document.getElementsByClassName("hexo-douban-lastpage");
+var pagenums = document.getElementsByClassName("hexo-douban-pagenum");
+
+function makePageNum(num, arr) {
+    return (num + 1) + ' / ' + (Math.ceil(arr.length / 10 === 0 ? 1 : Math.ceil(arr.length / 10)));
+}
+
+function firstBtn() {
+    var sibs = this.parentNode.siblings();
+    displayPage(sibs, 0);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(0, sibs);
+}
+
+function previousBtn() {
+    var sibs = this.parentNode.siblings();
+    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
+    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
+    currNum = parseInt(currNum, 10) - 1;
+    if (currNum > 0) {
+        currNum--;
+    }
+    displayPage(sibs, currNum);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
+}
+
+function nextBtn() {
+    var sibs = this.parentNode.siblings();
+    var currNum = this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText;
+    currNum = currNum.substr(0, currNum.indexOf('/') - 1);
+    currNum = parseInt(currNum, 10) - 1;
+    if (currNum < Math.ceil(sibs.length / 10) - 1) {
+        currNum++;
+    }
+    displayPage(sibs, currNum);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(currNum, sibs);
+}
+
+function lastBtn() {
+    var sibs = this.parentNode.siblings();
+    displayPage(sibs, Math.ceil(sibs.length / 10) - 1);
+    this.parentNode.getElementsByClassName('hexo-douban-pagenum')[0].innerText = makePageNum(Math.ceil(sibs.length / 10) - 1 === -1 ? 0 : Math.ceil(sibs.length / 10) - 1, sibs);
+}
+
+function displayPage(arr, num) {
+    for (var i = 0; i < arr.length; i++) {
+        if (Math.floor(i / 10) === num) {
+            arr[i].classList.remove('hexo-douban-hide');
+            var img = arr[i].getElementsByTagName('img')[0];
+            img.src = img.getAttribute('data-src');
+        } else {
+            arr[i].classList.add('hexo-douban-hide');
+        }
+    }
+}
+
+for (var i = 0; i < firstpages.length; i++) {
+
+    //add listener
+    firstpages[i].onclick = firstBtn;
+    previouspages[i].onclick = previousBtn;
+    nextpages[i].onclick = nextBtn;
+    lastpages[i].onclick = lastBtn;
+
+    //set page num
+    var size = pagenums[i].parentNode.siblings().length;
+    pagenums[i].innerText = '1 / ' + (Math.ceil(size / 10) === 0 ? 1 : Math.ceil(size / 10));
+    firstpages[i].click();
+}
+
+</script>
+
+</div><nav id="pagination"><div class="pagination"></div></nav><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = true == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'qIfwEiuSjlc5vyminB1rx2qX-gzGzoHsz',
+  appKey:'erfVXuW3AybzbWGqxSGxnBRp',
+  placeholder:'来都来了，说点儿什么吧~',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></article><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"><div class="author-info__name">w.k.x.</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length_num">4</div></a></div><div class="card-info-data-item is-center">      <a href="/tags/"><div class="headline">标签</div><div class="length_num">2</div></a></div><div class="card-info-data-item is-center">     <a href="/categories/"><div class="headline">分类</div><div class="length_num">1</div></a></div></div><div class="card-info-bookmark is-center"><a class="bookmark button--primary button--animated" id="bookmark-it" href="javascript:;" title="加入书签" target="_self"><i class="fa fa-bookmark" aria-hidden="true"></i><span>加入书签</span></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/shivakasu" target="_blank"><i class="fa fa-github" aria-hidden="true"></i></a><a class="social-icon" href="mailto:wkx1996@foxmail.com" target="_blank"><i class="fa fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="/atom.xml" target="_blank"><i class="fa fa-rss" aria-hidden="true"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fa fa-bullhorn card-announcement-animation" aria-hidden="true"></i><span>公告</span></div><div class="announcement_content">哈哈哈哈哈哈哈嗝 ^_^</div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fa fa-history" aria-hidden="true"></i><span>最新文章</span></div><div class="aside-recent-item"> <div class="aside-recent-post"><a href="/2019/02/04/fpy0/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/cover/fpy.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="流畅的Python Chapter 1：Python 数据模型" alt="流畅的Python Chapter 1：Python 数据模型"></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/02/04/fpy0/" title="流畅的Python Chapter 1：Python 数据模型">流畅的Python Chapter 1：Python 数据模型</div><time class="aside-post_meta post-meta__date">2019-02-04</time></div></a></div><div class="aside-recent-post"><a href="/2019/01/24/mir2/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/cover/mir.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="现代信息检索 Chapter 3：信息检索建模" alt="现代信息检索 Chapter 3：信息检索建模"></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/01/24/mir2/" title="现代信息检索 Chapter 3：信息检索建模">现代信息检索 Chapter 3：信息检索建模</div><time class="aside-post_meta post-meta__date">2019-01-24</time></div></a></div><div class="aside-recent-post"><a href="/2019/01/19/mir1/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/cover/mir.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="现代信息检索 Chapter 2：用户搜索界面" alt="现代信息检索 Chapter 2：用户搜索界面"></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/01/19/mir1/" title="现代信息检索 Chapter 2：用户搜索界面">现代信息检索 Chapter 2：用户搜索界面</div><time class="aside-post_meta post-meta__date">2019-01-19</time></div></a></div><div class="aside-recent-post"><a href="/2019/01/18/mir0/"><div class="aside-post-cover"><img class="aside-post-bg lazyload" data-src="/img/cover/mir.png" onerror="this.onerror=null;this.src='/img/404.jpg'" title="现代信息检索 Chapter 1：引言" alt="现代信息检索 Chapter 1：引言"></div><div class="aside-post-title"><div class="aside-post_title" href="/2019/01/18/mir0/" title="现代信息检索 Chapter 1：引言">现代信息检索 Chapter 1：引言</div><time class="aside-post_meta post-meta__date">2019-01-18</time></div></a></div></div></div></div><div class="card-widget card-categories"><div class="card-content"><div class="item-headline"><i class="fa fa-folder-open" aria-hidden="true"></i><span>分类</span></div><ul class="aside-category-item">       <li class="aside-category-list"><a class="aside-category-list_link" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"><span class="aside-category-list_name">读书笔记</span><span class="aside-category-list_length">4</span></a></li></ul></div></div><div class="card-widget card-tags"><div class="card-content"><div class="item-headline"><i class="fa fa-tags" aria-hidden="true"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Python/" style="font-size: 16px; color: #999">Python</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA/" style="font-size: 24px; color: #99a9bf">计算机理论</a></div></div></div><div class="card-widget card-archives"><div class="card-content"><div class="item-headline"><i class="fa fa-archive" aria-hidden="true"></i><span>归档</span></div><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><span class="archive-list-date">2019年02月</span><span class="archive-list-count">1</span></a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/"><span class="archive-list-date">2019年01月</span><span class="archive-list-count">3</span></a></li></ul></div></div><div class="card-widget card-webinfo"><div class="card-content"><div class="item-headline"><i class="fa fa-line-chart" aria-hidden="true"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="webinfo-article-name">文章数目 :</div><div class="webinfo-article-count">4</div></div><div class="webinfo-item"><div class="webinfo-runtime-name">已运行时间 :</div><div class="webinfo-runtime-count" id="webinfo-runtime-count" start_date="1/4/2020 00:00:00">     </div></div><div class="webinfo-item">      <div class="webinfo-site-uv-name">本站访客数 :</div><div class="webinfo-site-uv-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="webinfo-site-name">本站总访问量 :</div><div class="webinfo-site-pv-count" id="busuanzi_value_site_pv"></div></div></div></div></div></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By w.k.x.</div><div class="framework-info"><span>driven by </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a></div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>京ICP备19001969号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script></body></html>
