@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>ehcart test | SHIVAKASU</title><meta name="description" content="ehcart test"><meta name="keywords" content="算法"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="ehcart test"><meta name="twitter:description" content="ehcart test"><meta name="twitter:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta property="og:type" content="article"><meta property="og:title" content="ehcart test"><meta property="og:url" content="http://shivakasu.github.io/2020/01/16/arg3/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="ehcart test"><meta property="og:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>旅行商问题与最优解搜索算法 | SHIVAKASU</title><meta name="description" content="旅行商问题与最优解搜索算法"><meta name="keywords" content="算法"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="旅行商问题与最优解搜索算法"><meta name="twitter:description" content="旅行商问题与最优解搜索算法"><meta name="twitter:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta property="og:type" content="article"><meta property="og:title" content="旅行商问题与最优解搜索算法"><meta property="og:url" content="http://shivakasu.github.io/2020/01/16/arg3/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="旅行商问题与最优解搜索算法"><meta property="og:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
 var t = Cookies.get("theme");
 if (autoChangeMode == '1'){
 const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
@@ -70,12 +70,13 @@ function activateLightMode(){
   isPost: true
   
 }</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
-</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">18</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#一、问题描述"><span class="toc_mobile_items-text">一、问题描述</span></a></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、问题描述"><span class="toc-text">一、问题描述</span></a></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">ehcart test</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-01-16<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-01-16</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0/">日常专业学习</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">250</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 1 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/2020/01/16/arg3/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/01/16/arg3/" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><!-- 旅行商问题与最优解搜索算法 -->
-<h1 id="一、问题描述"><a href="#一、问题描述" class="headerlink" title="一、问题描述"></a>一、问题描述</h1><div id="echarts148" style="width: 85%;height: 400px;margin: 0 auto"></div>
+</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">18</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">5</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">3</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#1-问题描述"><span class="toc_mobile_items-text">1 问题描述</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#2-精确算法"><span class="toc_mobile_items-text">2 精确算法</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-1-暴力搜索"><span class="toc_mobile_items-text">2.1 暴力搜索</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-2-动态规划"><span class="toc_mobile_items-text">2.2 动态规划</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#3-爬山法"><span class="toc_mobile_items-text">3 爬山法</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#4-模拟退火"><span class="toc_mobile_items-text">4 模拟退火</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-问题描述"><span class="toc-text">1 问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-精确算法"><span class="toc-text">2 精确算法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-暴力搜索"><span class="toc-text">2.1 暴力搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-动态规划"><span class="toc-text">2.2 动态规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-爬山法"><span class="toc-text">3 爬山法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-模拟退火"><span class="toc-text">4 模拟退火</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">旅行商问题与最优解搜索算法</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-01-16<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-01-17</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0/">日常专业学习</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">1.6k</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 7 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/2020/01/16/arg3/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/01/16/arg3/" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1 问题描述"></a>1 问题描述</h1><p>旅行商问题（Travelling Salesman Problem, TSP）是这样一个问题：给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路。它是组合优化中的一个NP困难问题。本文以中国31个城市的坐标为数据，求解访问全部城市的最短路径。坐标和分布如下：  </p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import math,random,time</span><br><span class="line"></span><br><span class="line"># 城市坐标</span><br><span class="line">cities &#x3D; [(1304,2312),(3639,1315),(4177,2244),(3712,1399),</span><br><span class="line">        (3488,1535),(3326,1556),(3238,1229),(4196,1004),</span><br><span class="line">        (4312,790),(4386,570),(3007,1970),(2562,1756),</span><br><span class="line">        (2788,1491),(2381,1676),(1332,695),(3715,1678),</span><br><span class="line">        (3918,2179),(4061,2370),(3780,2212),(3676,2578),</span><br><span class="line">        (4029,2838),(4263,2931),(3429,1908),(3507,2367),</span><br><span class="line">        (3394,2643),(3439,3201),(2935,3240),(3140,3550),</span><br><span class="line">        (2545,2357),(2778,2826),(2370,2975)]</span><br><span class="line"></span><br><span class="line"># 邻接矩阵，distance[i][j]表示cities[i]到cities[j]的距离</span><br><span class="line">distance &#x3D; []</span><br><span class="line">for i in range(len(cities)):</span><br><span class="line">    distance.append([])</span><br><span class="line">    for j in range(len(cities)):</span><br><span class="line">        if i&lt;&#x3D;j:</span><br><span class="line">            # 距离存为整数，看着舒服</span><br><span class="line">            distance[i].append(int(math.sqrt((cities[i][0]-cities[j][0])**2+(cities[i][1]-cities[j][1])**2)))</span><br><span class="line">        else:</span><br><span class="line">            distance[i].append(distance[j][i])</span><br><span class="line">            </span><br><span class="line"># 计算一个解的路径总长度</span><br><span class="line">def totalDistance(arr):</span><br><span class="line">    res &#x3D; 0</span><br><span class="line">    for i in range(len(arr)-1):</span><br><span class="line">        res +&#x3D; distance[arr[i]][arr[i+1]]</span><br><span class="line">    res +&#x3D; distance[arr[-1]][arr[0]]</span><br><span class="line">    return res</span><br></pre></td></tr></table></figure></div>
+<div id="echarts4488" style="width: 85%;height: 400px;margin: 0 auto"></div>
 <script src="https://cdn.bootcss.com/echarts/3.8.0/echarts.common.min.js"></script>
 <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('echarts148'));
+        var myChart = echarts.init(document.getElementById('echarts4488'));
         // 指定图表的配置项和数据
         var option = {
     tooltip: {
@@ -91,7 +92,7 @@ function activateLightMode(){
     },
     legend: {
         bottom: 5,
-        data: ["女性", "男性"]
+        data: ["城市"]
     },
     toolbox: {
         show: true,
@@ -122,20 +123,162 @@ function activateLightMode(){
     ],
     series: [
         {
-            name: "女性",
+            name: "城市",
             type: "scatter",
-            data: [[161.2, 51.6], [172.9, 62.5], [153.4, 42], [160, 50], [147.2, 49.8], [168.2, 49.2], [175, 73.2], [157, 47.8], [167.6, 68.8], [159.5, 50.6], [175, 82.5], [166.8, 57.2], [176.5, 87.8], [170.2, 72.8], [174, 54.5], [173, 59.8], [179.9, 67.3], [170.5, 67.8], [162.6, 61.4]]
-        },
-        {
-            name: "男性",
-            type: "scatter",
-            data: [[174, 65.6], [164.1, 55.2], [163, 57], [171.5, 61.4], [184.2, 76.8], [174, 86.8], [182, 72], [167, 64.6], [177.8, 74.8], [180.3, 93.2], [180.3, 82.7], [177.8, 58], [177.8, 79.5], [177.8, 78.6], [177.8, 71.8], [177.8, 72], [177.8, 81.8], [180.3, 83.2]]
+            data: [[1304,2312],[3639,1315],[4177,2244],[3712,1399],
+            [3488,1535],[3326,1556],[3238,1229],[4196,1004],
+            [4312,790],[4386,570],[3007,1970],[2562,1756],
+            [2788,1491],[2381,1676],[1332,695],[3715,1678],
+            [3918,2179],[4061,2370],[3780,2212],[3676,2578],
+            [4029,2838],[4263,2931],[3429,1908],[3507,2367],
+            [3394,2643],[3439,3201],[2935,3240],[3140,3550],
+            [2545,2357],[2778,2826],[2370,2975]]
         }
     ]
 };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-</script></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://shivakasu.github.io/2020/01/16/arg3/">http://shivakasu.github.io/2020/01/16/arg3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://shivakasu.github.io">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法    </a></div><div class="post_share"><div class="social-share" data-image="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/01/15/arg2/"><img class="next_cover lazyload" data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>Manacher 算法</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/01/11/arg1/" title="字符串匹配算法总结"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-11</div><div class="relatedPosts_title">字符串匹配算法总结</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/10/arg0/" title="《程序员代码面试指南》阅后简记"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/5f37cb297aa622ca620e/interview0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-10</div><div class="relatedPosts_title">《程序员代码面试指南》阅后简记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/15/arg2/" title="Manacher 算法"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-15</div><div class="relatedPosts_title">Manacher 算法</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+</script>
+<p>在最优解搜索问题中，首先需要明确的是解的形式是什么以及评价解好坏的标准是什么。在旅行商问题中，解的形式是遍历城市的顺序，也就是城市数组排列的一种顺序，评价解的标准是路径总长度。</p>
+<h1 id="2-精确算法"><a href="#2-精确算法" class="headerlink" title="2 精确算法"></a>2 精确算法</h1><p>精确算法得到的结果是全局最优解，因而在求解NP完全问题时必然会遇到时间复杂度爆炸的瓶颈。</p>
+<h2 id="2-1-暴力搜索"><a href="#2-1-暴力搜索" class="headerlink" title="2.1 暴力搜索"></a>2.1 暴力搜索</h2><p>暴力搜索是采用深度优先遍历，依次遍历所有可能的路径，保证最终能得到全局最优解。算法结构简单，占用空间小，但在问题包含 $N$ 个节点的情况下总路径数高达 $N!$ ，时间复杂度也是 $O(N!)$ 。</p>
+<h2 id="2-2-动态规划"><a href="#2-2-动态规划" class="headerlink" title="2.2 动态规划"></a>2.2 动态规划</h2><p>首先要证明动态规划的可行性，即问题的最优解所包含的子问题的解也是最优的。在本题中就是要证明，当 $s<em>0\rightarrow s_1\rightarrow s_2…\rightarrow s</em>{n-1} \rightarrow s<em>0$ 是从 $s_0$ 出发经过 $n$ 个城市回到 $s_0$ 的最短路径时，子问题 $s_1\rightarrow s_2…\rightarrow s</em>{n-1} \rightarrow s_0$ 就是从 $s_1$ 出发经过 $n-1$ 个城市到达 $s_0$ 的最短路径，使用反证法就能证明。</p>
+<p>设 $dp(i,V)$ 表示从顶点 $s<em>i$ 出发经过 $V$ 中各个顶点一次且仅一次，最后回到出发点 $s_0$ 的最短路径长度。当 $V$ 是空集时，直接回到 $s_0$ 即可，路径长度就是 $s_i$ 到 $s_0$ 的距离，记为 $dp(i,{})=c</em>{i0}$ ，当 $V$ 不是空集时，就要遍历当前可选择的所有子问题，即 $dp(i,V)=min{c_{ik}+dp(k,V-{k})}$</p>
+<p>时间复杂度 $O(2^nn^2)$ ，空间复杂度 $O(n2^n)$ </p>
+<h2 id="3-爬山法"><a href="#3-爬山法" class="headerlink" title="3 爬山法"></a>3 爬山法</h2><p>爬山法是一种简单的局部择优的算法。算法从一个随机位置开始（也就是先随机生成一个解），在每次迭代中随机访问当前最优解附近的一个解（也就是对当前最优解做一些微小的改变），如果新的解更优就更新为当前最优解，如果新的解更差就丢弃。直到在当前最优解附近找不到更优解，说明算法找到了一个局部最优解，就把这个解当做最终结果返回。在实际应用时，用这种随机方法寻找局部最优的时间可能很长，为了缩短程序的运行时间，需要设定最大迭代次数，当算法已经达到最大迭代次数，即使还未找到局部最优解也要停止迭代，返回当前最优解。Python3实现如下，迭代次数设为十万次：</p>
+<div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def hillClimb():</span><br><span class="line">    startTime &#x3D; time.time()</span><br><span class="line">    # 初始的随机解</span><br><span class="line">    arr &#x3D; list(range(len(cities)))</span><br><span class="line">    random.shuffle(arr)</span><br><span class="line">    maxIter &#x3D; 100000</span><br><span class="line">    currIter &#x3D; 0</span><br><span class="line">    minDistance &#x3D; -1</span><br><span class="line">    while currIter&lt;maxIter:</span><br><span class="line">        # 每次对解的改变就是随机交换两个位置的值</span><br><span class="line">        change &#x3D; random.sample(range(len(cities)),2)</span><br><span class="line">        arr[change[0]],arr[change[1]] &#x3D; arr[change[1]],arr[change[0]]</span><br><span class="line">        newDistance &#x3D; totalDistance(arr)</span><br><span class="line">        if newDistance&lt;minDistance or minDistance&lt;0:</span><br><span class="line">            minDistance &#x3D; newDistance</span><br><span class="line">        else:</span><br><span class="line">            # 不是更优解就恢复原样</span><br><span class="line">            arr[change[0]],arr[change[1]] &#x3D; arr[change[1]],arr[change[0]]</span><br><span class="line">        currIter +&#x3D; 1</span><br><span class="line">    endTime &#x3D; time.time()</span><br><span class="line">    print(&quot;最短路程：&quot;+str(minDistance))</span><br><span class="line">    print(&quot;运行时间：&quot;+str(endTime-startTime))</span><br></pre></td></tr></table></figure></div>
+<p>程序独立运行10次结果如下，最优结果的序号为4：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">最短路径</td>
+<td style="text-align:center">19003</td>
+<td style="text-align:center">18528</td>
+<td style="text-align:center">17039</td>
+<td style="text-align:center">19086</td>
+<td style="text-align:center">16804</td>
+<td style="text-align:center">17771</td>
+<td style="text-align:center">19161</td>
+<td style="text-align:center">18548</td>
+<td style="text-align:center">17735</td>
+<td style="text-align:center">17991</td>
+</tr>
+<tr>
+<td style="text-align:center">运行时间(s)</td>
+<td style="text-align:center">0.989</td>
+<td style="text-align:center">0.985</td>
+<td style="text-align:center">1.012</td>
+<td style="text-align:center">0.996</td>
+<td style="text-align:center">0.998</td>
+<td style="text-align:center">0.993</td>
+<td style="text-align:center">0.994</td>
+<td style="text-align:center">0.994</td>
+<td style="text-align:center">1.010</td>
+<td style="text-align:center">1.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>最优结果对应的路线如下：</p>
+<div id="echarts2065" style="width: 85%;height: 400px;margin: 0 auto"></div>
+<script src="https://cdn.bootcss.com/echarts/3.8.0/echarts.common.min.js"></script>
+<script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('echarts2065'));
+        // 指定图表的配置项和数据
+        var option = {
+    tooltip: {
+        trigger: "axis",
+        showDelay: 0,
+        axisPointer: {
+            type: "cross",
+            lineStyle: {
+                type: "dashed",
+                width: 1
+            }
+        }
+    },
+    legend: {
+        bottom: 5,
+        data: ["城市","路径"]
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            mark: {
+                show: true
+            },
+            dataZoom: {
+                show: true
+            }
+        }
+    },
+    xAxis: [
+        {
+            type: "value",
+            power: 1,
+            precision: 2,
+            scale: true
+        }
+    ],
+    yAxis: [
+        {
+            type: "value",
+            power: 1,
+            precision: 2,
+            scale: true
+        }
+    ],
+    series: [
+        {
+            name: '路径',
+            type: 'line',
+            smooth: 0.2,
+            color: ['#66AEDE'],
+            data: [[2381, 1676],[3394, 2643],[3676, 2578],
+            [3507, 2367],[3007, 1970],[2562, 1756],[2788, 1491],
+            [3238, 1229],[4386, 570],[4312, 790],[4196, 1004],
+            [3639, 1315],[3712, 1399],[3715, 1678],[3488, 1535],
+            [3326, 1556],[3429, 1908],[3780, 2212],[3918, 2179],
+            [4177, 2244],[4061, 2370],[4263, 2931],[4029, 2838],
+            [3439, 3201],[3140, 3550],[2935, 3240],[2778, 2826],
+            [2370, 2975],[2545, 2357],[1304, 2312],[1332, 695],
+            [2381, 1676]]
+        },
+        {
+            name: "城市",
+            type: "scatter",
+            data: [[1304,2312],[3639,1315],[4177,2244],[3712,1399],
+            [3488,1535],[3326,1556],[3238,1229],[4196,1004],
+            [4312,790],[4386,570],[3007,1970],[2562,1756],
+            [2788,1491],[2381,1676],[1332,695],[3715,1678],
+            [3918,2179],[4061,2370],[3780,2212],[3676,2578],
+            [4029,2838],[4263,2931],[3429,1908],[3507,2367],
+            [3394,2643],[3439,3201],[2935,3240],[3140,3550],
+            [2545,2357],[2778,2826],[2370,2975]]
+        }
+    ]
+};
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+</script>
+<h2 id="4-模拟退火"><a href="#4-模拟退火" class="headerlink" title="4 模拟退火"></a>4 模拟退火</h2></div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://shivakasu.github.io/2020/01/16/arg3/">http://shivakasu.github.io/2020/01/16/arg3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://shivakasu.github.io">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法    </a></div><div class="post_share"><div class="social-share" data-image="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/01/15/arg2/"><img class="next_cover lazyload" data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>Manacher 算法</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/01/15/arg2/" title="Manacher 算法"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-15</div><div class="relatedPosts_title">Manacher 算法</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/10/arg0/" title="《程序员代码面试指南》阅后简记"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/5f37cb297aa622ca620e/interview0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-10</div><div class="relatedPosts_title">《程序员代码面试指南》阅后简记</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/11/arg1/" title="字符串匹配算法总结"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-11</div><div class="relatedPosts_title">字符串匹配算法总结</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
 var verify = true == true ? true : false;
 var GUEST_INFO = ['nick','mail','link'];
 var guest_info = 'nick,mail,link'.split(',').filter(function(item){
