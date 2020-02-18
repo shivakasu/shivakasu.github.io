@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://shivakasu.github.io/"/>
-  <updated>2020-02-18T10:57:24.276Z</updated>
+  <updated>2020-02-18T11:21:02.189Z</updated>
   <id>http://shivakasu.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>《西方哲学史》2：中世纪时期(更新中)</title>
+    <link href="http://shivakasu.github.io/2020/02/18/phi1/"/>
+    <id>http://shivakasu.github.io/2020/02/18/phi1/</id>
+    <published>2020-02-18T11:17:20.000Z</published>
+    <updated>2020-02-18T11:21:02.189Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="1-概论"><a href="#1-概论" class="headerlink" title="1 概论"></a>1 概论</h1><h1 id="2-新柏拉图主义"><a href="#2-新柏拉图主义" class="headerlink" title="2 新柏拉图主义"></a>2 新柏拉图主义</h1><h1 id="3-教父哲学"><a href="#3-教父哲学" class="headerlink" title="3 教父哲学"></a>3 教父哲学</h1><h1 id="4-经院哲学"><a href="#4-经院哲学" class="headerlink" title="4 经院哲学"></a>4 经院哲学</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="网课笔记" scheme="http://shivakasu.github.io/categories/%E7%BD%91%E8%AF%BE%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="哲学" scheme="http://shivakasu.github.io/tags/%E5%93%B2%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>《西方哲学史》1：古希腊罗马时期</title>
@@ -494,32 +520,6 @@
     <updated>2020-01-10T04:11:29.079Z</updated>
     
     <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ conda install libgcc</span><br></pre></td></tr></table></figure></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="bugfix" scheme="http://shivakasu.github.io/categories/bugfix/"/>
-    
-    
-      <category term="Python" scheme="http://shivakasu.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Anaconda中关于Qt的bug</title>
-    <link href="http://shivakasu.github.io/2016/10/27/bugfix3/"/>
-    <id>http://shivakasu.github.io/2016/10/27/bugfix3/</id>
-    <published>2016-10-27T12:59:20.000Z</published>
-    <updated>2020-01-10T04:11:10.912Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>先安装了anaconda，可以使用。<br>之后使用conda命令安装了Orange，由于Orange会安装Qt，可能会导致与anaconda自带的Qt冲突，然后我惊喜的发现anaconda-navigator打不开了，报出以下错误：</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&#x2F;home&#x2F;shiva&#x2F;anaconda3&#x2F;bin&#x2F;anaconda-navigator&quot;, line 4, in &lt;module&gt;</span><br><span class="line">    import anaconda_navigator.app.main</span><br><span class="line">  File &quot;&#x2F;home&#x2F;shiva&#x2F;anaconda3&#x2F;lib&#x2F;python3.5&#x2F;site-packages&#x2F;anaconda_navigator&#x2F;app&#x2F;main.py&quot;, line 21, in &lt;module&gt;</span><br><span class="line">    from anaconda_navigator.widgets.dialogs.splash import SplashScreen</span><br><span class="line">  File &quot;&#x2F;home&#x2F;shiva&#x2F;anaconda3&#x2F;lib&#x2F;python3.5&#x2F;site-packages&#x2F;anaconda_navigator&#x2F;widgets&#x2F;__init__.py&quot;, line 18, in &lt;module&gt;</span><br><span class="line">    from anaconda_navigator.utils.analytics import GATracker</span><br><span class="line">  File &quot;&#x2F;home&#x2F;shiva&#x2F;anaconda3&#x2F;lib&#x2F;python3.5&#x2F;site-packages&#x2F;anaconda_navigator&#x2F;utils&#x2F;analytics.py&quot;, line 33, in &lt;module&gt;</span><br><span class="line">    from qtpy.QtCore import QT_VERSION_STR, QObject, QThread, QTimer, Signal</span><br><span class="line">ImportError: cannot import name &#39;QT_VERSION_STR&#39;</span><br></pre></td></tr></table></figure></div><p>参照了<a href="https://github.com/ContinuumIO/anaconda-issues/issues/1095的解决方法成功修复，具体方法是：" target="_blank" rel="noopener">https://github.com/ContinuumIO/anaconda-issues/issues/1095的解决方法成功修复，具体方法是：</a><br>打开 /anaconda3/pkgs/anaconda-navigator-1.2.3-py35_0/lib/python3.5/site-packages/anaconda_navigator/utils/analytics.py<br>把</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from qtpy.QtCore import QT_VERSION_STRING , QObject, QThread, QTimer, Signal</span><br></pre></td></tr></table></figure></div><p>改成</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">from qtpy.QtCore import __version__ as qt_version , QObject, QThread, QTimer, Signal</span><br></pre></td></tr></table></figure></div><p>把</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.info &#x3D; &#123;&#39;python&#39;: python_version, &#39;language&#39;: self.get_language(),</span><br><span class="line">             &#39;os&#39;: operating_system, &#39;version&#39;: app_version,</span><br><span class="line">             &#39;platform&#39;: self.api.conda_platform(),</span><br><span class="line">             &#39;qt&#39;: QT_VERSION_STR, &#39;pyqt&#39;: pyqt_version,</span><br><span class="line">             &#39;conda&#39;: conda_version&#125;</span><br></pre></td></tr></table></figure></div><p>改成</p><div class="code-area-wrap"><div class="highlight-tools"><i class="fa fa-angle-down code-expand" aria-hidden="true"></i><div class="code_lang">Code</div><div class="copy-notice"></div><i class="fa fa-clipboard" aria-hidden="true"></i></div><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">self.info &#x3D; &#123;&#39;python&#39;: python_version, &#39;language&#39;: self.get_language(),</span><br><span class="line">             &#39;os&#39;: operating_system, &#39;version&#39;: app_version,</span><br><span class="line">             &#39;platform&#39;: self.api.conda_platform(),</span><br><span class="line">             &#39;qt&#39;: qt_version, &#39;pyqt&#39;: pyqt_version,</span><br><span class="line">             &#39;conda&#39;: conda_version&#125;</span><br></pre></td></tr></table></figure></div>]]></content>
     
     <summary type="html">
     
