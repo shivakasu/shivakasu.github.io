@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>区块链技术与应用笔记 | SHIVAKASU</title><meta name="description" content="区块链技术与应用笔记"><meta name="keywords" content="算法,区块链"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="区块链技术与应用笔记"><meta name="twitter:description" content="区块链技术与应用笔记"><meta name="twitter:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta property="og:type" content="article"><meta property="og:title" content="区块链技术与应用笔记"><meta property="og:url" content="http://shivakasu.github.io/2020/05/28/blockchain0/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="区块链技术与应用笔记"><meta property="og:image" content="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://shivakasu.github.io/2020/05/28/blockchain0/"><link rel="next" title="美语连读规则" href="http://shivakasu.github.io/2020/05/15/english2/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QBXC0PXLIT","apiKey":"517431eabeeedb8d3792391b21e8cf20","indexName":"blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#1-比特币"><span class="toc_mobile_items-text">1 比特币</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-1-密码学原理"><span class="toc_mobile_items-text">1.1 密码学原理</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-2-数据结构"><span class="toc_mobile_items-text">1.2 数据结构</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-3-协议"><span class="toc_mobile_items-text">1.3 协议</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-4-实现"><span class="toc_mobile_items-text">1.4 实现</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-5-网络"><span class="toc_mobile_items-text">1.5 网络</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-比特币"><span class="toc-text">1 比特币</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-密码学原理"><span class="toc-text">1.1 密码学原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-数据结构"><span class="toc-text">1.2 数据结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-协议"><span class="toc-text">1.3 协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-实现"><span class="toc-text">1.4 实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-网络"><span class="toc-text">1.5 网络</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">区块链技术与应用笔记</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-05-28<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-05-29</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0/">日常专业学习</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">5.3k</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 15 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/2020/05/28/blockchain0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/05/28/blockchain0/" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="1-比特币"><a href="#1-比特币" class="headerlink" title="1 比特币"></a>1 比特币</h1><h2 id="1-1-密码学原理"><a href="#1-1-密码学原理" class="headerlink" title="1.1 密码学原理"></a>1.1 密码学原理</h2><ul>
+<li>加密货币(crypto-currency)用到的密码学技术是哈希和签名。</li>
+<li>加密货币用到的哈希函数叫做加密哈希函数(cryptographic hash function), 它有三个特性：<ul>
+<li>collision resistance：抗碰撞性，即输入空间足够大时，给定一个 $x$ ，没有一种比穷举更高效的方法使我们找到一个 $y\neq x$ 满足 $hash(x)=hash(y)$ 。有此性质可以防篡改，因为几乎不可能人为篡改信息后仍保持哈希值不变。抗碰撞性是不可证明的，只能通过经验大概判断。</li>
+<li>hiding：藏匿性，即输入空间足够大时，给定一个哈希值 $hash(x)$ ，没有一种比穷举更高效的方法使我们反推出对应的 $x$ 。结合抗碰撞性与藏匿性可以实现数字承诺(digital commitment)，即 seal a value in an envelope and open the envelope later。</li>
+<li>puzzle friendly：任何人无法得知哈希函数的映射规则，无法根据给定的哈希值要求构造输入。这是比特币对哈希函数的要求，比特币是一块指定的哈希值空间，如果要寻找对应这一块空间的输入，除了穷举挖矿没有捷径，因此挖矿的过程能够比较公正地作为工作量证明(proof of work)。由于哈希函数的单向性，寻找输入只能穷举，但验证输入的合法性很简单，因此挖出的比特币能够被所有人验证。</li>
+</ul>
+</li>
+<li>比特币的哈希函数是SHA-256，SHA是 Secure Hash Algorithm，满足上述三个性质。</li>
+<li>比特币用到的第二个密码学技术是数字签名，涉及到比特币的账户管理。比特币采用去中心化的账户管理，没有类似银行的中心机构，每个用户都能自主开户，开户过程就是在本地创建一个公钥私钥对，一个公钥私钥对就代表了一个账户。</li>
+<li>公钥私钥是非对称加密算法中的概念。对称加密算法中，加密和解密过程使用的是同一个密钥，能加密的人必然也能解密，所以需要保证密钥分发的安全性。而非对称加密算法不需要考虑这一点，加密用公钥，解密用私钥，每个用户只公开自己的公钥，使得所有人都能用自己的公钥加密，但只有用户自己能用私钥解密，从而防止了信息泄露。</li>
+<li>比特币系统本身是不加密的，所有信息都是公开的，公钥私钥主要是用来实现数字签名。每个用户的公钥分发给所有人，私钥保存在本地，进行比特币交易时，用自己的私钥进行加密，其他用户使用该用户的公钥进行解密即可验证交易人的身份。在此过程中，所有人都能解密，而只有签名用户能加密，同样保证了数字签名的安全性和可靠性，也就防止了假冒身份进行交易。</li>
+</ul>
+<h2 id="1-2-数据结构"><a href="#1-2-数据结构" class="headerlink" title="1.2 数据结构"></a>1.2 数据结构</h2><ul>
+<li>比特币使用的一个数据结构是区块链，区块链是一个个区块构成的链表，与一般链表的区别是使用哈希指针进行链接。哈希指针(hash pointer)同时保存了下一个区块的地址和下一个区块的哈希值。</li>
+<li>区块链中，最初的区块(next=null)称为创世纪块(genesis block)，头节点区块称为最近区块(most recent block)。每个区块包含指向前一个区块的哈希指针，系统中存储着一个独立的哈希指针指向最近区块。</li>
+<li>使用哈希指针可以实现防篡改日志(tamper-evident-log)，当一个区块内容被篡改后，哈希值改变，导致原本指向该区块的哈希指针无法匹配，系统为了保持链接会自动修改指向该区块的那个区块中的哈希指针，由于计算哈希值时也包含了区块中的哈希指针，所以会导致传递地逆着区块链接的方向修改所有区块中指针的哈希值，最终修改到指向最近区块的指针，因此任一区块的改变都会导致指向最近区块的指针的改变，所以只看一个指针就可以方便地判断有无篡改。此外，当用户不小心删除了本地的一个区块，需要别人重新发送一份时，可以根据指向丢失区块的哈希指针的哈希值判断收到的区块是否是正确的。</li>
+<li>比特币使用的另一个数据结构是梅克尔树(Merkle tree)，梅克尔树的叶节点是存储数据的数据块，非叶节点存储的是其所有子节点的哈希值，把当前节点的所有子节点的哈希值拼接后再算一次哈希，将这个哈希值保存在当前节点的父节点中，如此自底向上计算哈希，最后归结到根节点，根节点中的所有哈希值拼接后再算一次哈希，得到的就是最终的根哈希值。与区块链类似，梅克尔树也具有防篡改日志的特性，对任一数据块的篡改最终都会导致根哈希值的变化。</li>
+<li>由于区块链的冗余备份，要求所有结点都保存全部的数据文件，而随着区块链上的交易越来越多，数据同步的代价越来越高，只有少数大存储结点有能力保存全部数据，为了不让区块链演变成中心化结构，出现了全结点(full node)和轻结点(light node)的概念，全结点区块包含块头(header)和块身(body)，轻结点只有块头。梅克尔树的每个数据块都代表一个交易(transaction)，梅克尔树的根哈希值存储在块头，其余结构存储在块身，因此全结点存储了整个梅克尔树，而轻结点只存储了根哈希值。</li>
+<li>梅克尔树提供了梅克尔证明(Merkle proofs)的机制，使轻结点用户能够验证一个交易是否被写入了区块链中。梅克尔树一个叶节点到根节点的路径叫做一个梅克尔证明，用户根据已有的交易，向全结点请求该交易对应的梅克尔证明路径中自己无法求出的哈希值(因为非叶结点中的哈希值还涉及了其他交易，发送路径中用到的哈希值比发送所有叶结点的数据量小多了)，用户结合交易信息的哈希值和全结点提供的哈希值，就能逐层计算出最终的根哈希值，将计算得到的根哈希值和自己轻结点中存储的根哈希值对比，就能验证交易是否已经写入区块链。</li>
+<li>由于哈希函数的抗碰撞性，全结点几乎不可能恶意提供一个错误的梅克尔证明，使得轻结点用户根据一个被篡改的交易能够算出正确的根哈希值，所以梅克尔证明的机制是安全的。</li>
+<li>哈希指针只能用在无环的结构中，因为在环上会导致无穷尽的哈希值的循环影响。</li>
+</ul>
+<h2 id="1-3-协议"><a href="#1-3-协议" class="headerlink" title="1.3 协议"></a>1.3 协议</h2><ul>
+<li>公钥私钥的加密只能保证数字货币交易的安全性，但容易实施双花攻击(double spending attack)，因为数字货币的本质就是签了名的文件，不能即时标记使用次数，所以用户可以把数字货币复制多份重复使用。一种可行的解决方案是设立一个中央银行，数字货币的发行和交易必须经过央行的认证，央行给每个数字货币一个唯一的编号，验证交易时就可以根据编号查询该货币是否被使用过。但是这是中心化结构的实现方案，比特币系统的初衷是要去中心化的。</li>
+<li>去中心化的比特币系统要解决两个问题。一个是由谁发行比特币，这个问题与挖矿有关，后面再讲。另一个是防止双花攻击，解决方法就是全体用户维护一个区块链，用于记录和跟踪交易日志，所以区块链也被叫做公共账本。比特币的交易一方面要根据签名验证交易人的身份，同时也要验证比特币的来源，因为双花攻击就相当于发行货币、凭空创造货币，只要确定比特币来源可靠就能保证交易的有效性。</li>
+<li>假设A向B转账，在转账之前，A需要知道B的比特币账户地址，用户地址虽然不是保密的，但由于比特币系统没有查询用户地址的方法，所以需要通过别的渠道获得。同时，B要知道A的公钥，来验证比特币中A的签名，B收到一个带签名的交易和一个公钥，结合二者来验证交易的有效性，如果没有区块链的交易日志，就能允许一个第三者C同时篡改签名和公钥，让B成功验证交易后以为在和A交易但实际上走的别人的账户，一旦有了交易日志，就能知道比特币的当前持有人，甚至能追溯到发行该比特币的用户，所以对交易人公钥的篡改不会被区块链接受。(好像是这个意思，没太看懂)</li>
+<li>区块身中记录的是交易列表(transaction list)。区块头中记录的是一些宏观信息，如比特币的协议版本(Bitcoin version)，指向前一区块的指针(hash of previous block header)，梅克尔树的根哈希值(Merkle root hash)，挖矿的难度目标阈值(difficulty target)，时间戳(timestamp)，以及随机数(nonce)。哈希指针是在区块头之间链接的，指针中的哈希值也只是计算整个区块头的哈希值，不计算区块身，因为梅克尔树已经能保证交易的可靠性了，区块身就不用管了。</li>
+<li>区块链要满足分布式共识(distributed comsensus)，也就是每个用户本地的区块链数据要保持一致性，涉及到分布式系统的一些理论，如FLP、CAP。共识机制解决并保证每一笔交易在所有记帐节点上的一致性和正确性问题。区块链的共识机制不能依靠用户投票，因为区块链不能确定谁有投票权，也就是不能知道哪些用户是值得信任的，在区块链系统上创建账户太简单了，只需要生成公钥私钥对就够了，如果给所有用户同样的投票权，就可能会有某个用户恶意生成大量账户来操纵投票结果，这种攻击称为女巫攻击(sybil attack，水军攻击~)。</li>
+<li>区块链的共识机制是依据算力进行投票。挖矿的过程就是创建区块的过程，有效的哈希值只是哈希函数输出空间上很小的一个区域，矿工先构造一个区块头，然后穷举随机数nonce使得 $hash(block\ header)\leq difficulty\ target$ ，找到满足条件的随机数时，该矿工就有了记账权，也就是能往区块链中添加该区块。但仅仅是新区块内容有效也不一定被区块链接受，因为区块链的共识最终目的是保证比特币不停的在工作量最大(通常也是难度最多区块数最多)的区块链上运转，保证工作量最大的区块链成为唯一权威的公共总帐本，如果新区块不是添加在最长有效链的末尾，而是额外插在最长有效链的某个结点上导致产生了无效分支链，那么就不会被区块链接受。</li>
+<li>51%攻击就是利用新分支来篡改区块链，当攻击者掌握了全网超过50%的算力时，自己私下不断创建新区块却不发布到最长有效链上，当这条隐身的区块链长度超过了最长有效链时，攻击者将整条链发布，就能直接替代掉原来的最长有效链，抹除掉原来主链上的记录。</li>
+<li>正常情况下也会出现分支，当两个矿工几乎同时发布了新区块到主链末尾，就会产生两个分支。对于这种等长的临时分支，系统会同时保留并认可，直到有用户在某个分支下添加新的区块造成两个分支不等长，此时系统就会放弃短的分支，意味着短分支的计算工作全都白干了。</li>
+<li>因此共识机制就是有记账权的矿工们在区块链上添加区块，维护最长有效链，所谓的投票就是矿工选择分支进行扩展，只有有记账权的矿工才能投票，所以女巫攻击就不可行了，因为普通用户只有验证权没有记账权。之所以要拼算力竞争记账权，是因为添加新区块后添加者有权力在新区块内发行一定数量的比特币，作为挖矿的报酬，这种特殊交易称为铸币交易(coinbase transaction)，铸币交易是发行新比特币的唯一途径。比特币数量上限是2100万个，最初的新区块内可发行50个比特币，而后每创建21万个区块后，新区块内可发行的比特币数量减半，大概是每四年减半一次(通过调整挖矿难度，比特币协议规定了系统平均出块时间是10分钟左右)，目前已经减到12.5个，这种规则是为了抑制比特币的产出，但是随着比特币的升值，发布新区块的收益其实是越来越高的(不考虑挖矿的支出)。</li>
+</ul>
+<h2 id="1-4-实现"><a href="#1-4-实现" class="headerlink" title="1.4 实现"></a>1.4 实现</h2><ul>
+<li>比特币系统采用基于交易的账本模式(transaction-based ledger)，区块里记录着铸币交易和转账交易，但不显式记录每个账户的余额，查询余额需要根据交易日志推算。</li>
+<li>区块链的全结点维护着一个名为UTXO(Unspent Transaction Output)的数据结构，记录尚未花费的所有交易的输出，一个交易可以有多个输出，即同时转账给多人，也可以有多个输入，即多人同时转账给同一人。UTXO中的索引是交易的哈希值和输出的序号，根据这两个值可以检索具体某个交易的某个输出。交易完成前查询UTXO可以防止双花攻击，因为已花费的比特币记录会从UTXO中删除，确保只会花一次。一个交易既消耗UTXO中的记录，又会产生新的UTXO记录。</li>
+<li>通常交易的总输入等于总输出，但有时总输入会大于总输出，因为把自己的交易存储在别人的区块中要付给区块发布者少许交易费(transaction fee)。这是为了高效利用区块，激励区块发布者把别人的交易记录存储在自己的区块中。但相比于微薄的交易费，目前挖矿的动力主要还是为了十几个币的出块奖励，等到出块奖励衰减到微乎其微时，挖矿的动力就转为了交易费。</li>
+<li>与基于交易的账本模式对应的是基于账户的账本模式(account-based ledger)，系统会显式记录每个账户的余额，以太坊用的就是这种模式。</li>
+<li>由于当前挖矿人数太多，竞争激烈，挖矿难度已经被调整得非常高。区块头的nonce只是32位的无符号整数，有时穷举完32位的所有整数也无法找到满足难度要求的数，这时就需要调整区块头中其他可改字段的值，扩大搜索空间。通常修改的是梅克尔树的根哈希值，这个字段可改是因为铸币交易记录中的coinbase字段是自定义的，铸币用户写什么都无所谓，修改这个字段会导致梅克尔树根哈希值的改变。所以挖矿过程其实是两层循环，先遍历coinbase字段，再遍历nonce字段，搜索空间大大增加。</li>
+<li>挖矿过程中，每一次试数都是一次伯努利试验(Bernoulli trial: a random experiment with binary outcome)，两种结果是成功和失败，成功的概率远远小于失败的概率。多次试数就构成了一个伯努利过程(Bernoulli process: a sequence of independent Bernoulli trials)，伯努利过程的一个性质是无记忆性(memoryless)，意味着每次试数都是独立的、不受之前结果影响的。这个伯努利过程可以用泊松过程(Poisson process)来近似，因为泊松过程就是无记忆性的，就算已经有10分钟没有挖出新的区块，接下来挖到新区块的概率也不会因此而上升。无记忆性能够保证挖矿的公平性，因为防止了算力强的矿工滚雪球。</li>
+<li>由于四年减半，比特币的增量是一个等比数列，比特币的总量就是 $21万<em>50</em>(1+1/2+1/4…)=2100万$ 。</li>
+<li>挖矿一定程度上保证了比特币的安全，他不假定所有用户是诚实的，而是假定所有算力掌握在诚实的矿工手中。但这种安全性只是概率上的保证，体现了投票的可靠性，表明所有用户能够大概率地维护正确的最长有效链。此外，如果一个区块结点拒绝记录某个合法的交易，也总能等到有一个诚实的结点愿意记录该交易。</li>
+<li>基于这种信任，有一种六次确认的防篡改判断。当用户A向B发起交易后，可以利用自己的算力立即创建一条略长的新分支，暂时取代当前的主链来欺骗B，而B可以选择等待一段时间，由于A无法对抗全体用户的算力，一段时间后原来的主链会自然而然地被重新维护起来，通常是在交易所在的区块后边被扩展了六个新区块后，可以认为该交易是可靠的，代表有六个其他用户认可了该交易，10分钟创建一个新区块，所以等待时间大约是一个小时。</li>
+<li>虽然有了六次确认，零次确认还是比较普遍的。一方面因为创建新分支的结点会迟于在主链上添加节点，根据时间的先后，新分支有很大概率不会被区块链接受。另一方面交易的完成本身就需要一段时间，这就相当于六次确认的等待时间了。</li>
+</ul>
+<h2 id="1-5-网络"><a href="#1-5-网络" class="headerlink" title="1.5 网络"></a>1.5 网络</h2><ul>
+<li>比特币系统的区块链运行在应用层，下面的网络层是一个P2P覆盖网络(P2P Overlay Network)，网络中所有的结点都是平等的，没有所谓的super node或master node。结点之间使用TCP通信，有利于穿透防火墙。</li>
+<li>比特币的设计原则是简单鲁棒而非高效，网络中的信息采用flooding的方式传播，每个结点收到信息后传播给所有邻居结点，邻居结点的选择是随机的，不会考虑拓扑结构上的远近，比如中国的一个结点邻居可能在美国，这样提高了鲁棒性但牺牲了效率。</li>
+<li>每个结点要维护一个等待上链的交易的集合，通过查询集合可以保证相同的交易信息只对邻居发送一次。</li>
+<li>比特币系统限制了区块的大小是1MB，之所以设计得这么小是因为比特币网络这种低效的信息传播方式非常耗带宽。</li>
+<li>比特币网络的信息传播属于best effort(尽力而为)，由于网络传输存在延迟，同时有些结点转发信息可能不合规范，最后可能会导致有的结点收不到信息，收到信息的顺序不一样，或者收到不合法的信息。这也是去中心化系统普遍面临的问题。</li>
+</ul>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://shivakasu.github.io/2020/05/28/blockchain0/">http://shivakasu.github.io/2020/05/28/blockchain0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://shivakasu.github.io">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法    </a><a class="post-meta__tags" href="/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/">区块链    </a></div><div class="post_share"><div class="social-share" data-image="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/05/15/english2/"><img class="next_cover lazyload" data-src="https://file.shivakasu.cn/5b017a32ea6819fdacee/english.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>美语连读规则</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/01/15/arg2/" title="Manacher 算法"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-15</div><div class="relatedPosts_title">Manacher 算法</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/11/arg1/" title="字符串匹配算法总结"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-11</div><div class="relatedPosts_title">字符串匹配算法总结</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/10/arg0/" title="《程序员代码面试指南》"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/5f37cb297aa622ca620e/interview0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-10</div><div class="relatedPosts_title">《程序员代码面试指南》</div></div></a></div><div class="relatedPosts_item"><a href="/2020/01/16/arg3/" title="旅行商问题与最优解搜索算法"><img class="relatedPosts_cover lazyload"data-src="https://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-01-16</div><div class="relatedPosts_title">旅行商问题与最优解搜索算法</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = true == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'qIfwEiuSjlc5vyminB1rx2qX-gzGzoHsz',
+  appKey:'erfVXuW3AybzbWGqxSGxnBRp',
+  placeholder:'来都来了，说点儿什么吧~',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By w.k.x.</div><div class="framework-info"><span>driven by </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a></div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>京ICP备19001969号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
