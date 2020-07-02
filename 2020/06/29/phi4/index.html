@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5"><title>叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学 | SHIVAKASU</title><meta name="description" content="叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学"><meta name="keywords" content="哲学"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="http://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="https://fonts.googleapis.com" crossorigin><link rel="preconnect" href="//busuanzi.ibruce.info"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学"><meta name="twitter:description" content="叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学"><meta name="twitter:image" content="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><meta property="og:type" content="article"><meta property="og:title" content="叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学"><meta property="og:url" content="http://shivakasu.github.io/2020/06/29/phi4/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学"><meta property="og:image" content="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script src="https://cdn.jsdelivr.net/npm/js-cookie/dist/js.cookie.min.js"></script><script>const autoChangeMode = 'false'
+var t = Cookies.get("theme");
+if (autoChangeMode == '1'){
+const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
+const isNotSpecified = window.matchMedia("(prefers-color-scheme: no-preference)").matches
+const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+if (t === undefined){
+  if (isLightMode) activateLightMode()
+  else if (isDarkMode) activateDarkMode()
+  else if (isNotSpecified || hasNoSupport){
+    console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+    now = new Date();
+    hour = now.getHours();
+    isNight = hour < 6 || hour >= 18
+    isNight ? activateDarkMode() : activateLightMode()
+}
+} else if (t == 'light') activateLightMode()
+else activateDarkMode()
+
+
+} else if (autoChangeMode == '2'){
+  now = new Date();
+  hour = now.getHours();
+  isNight = hour < 6 || hour >= 18
+  if(t === undefined) isNight? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode() 
+} else {
+  if ( t == 'dark' ) activateDarkMode()
+  else if ( t == 'light') activateLightMode()
+}
+
+function activateDarkMode(){
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+    document.querySelector('meta[name="theme-color"]').setAttribute('content','#000')
+  }
+}
+function activateLightMode(){
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null){
+  document.querySelector('meta[name="theme-color"]').setAttribute('content','#fff')
+  }
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="canonical" href="http://shivakasu.github.io/2020/06/29/phi4/"><link rel="next" title="tinyhttpd 源码阅读" href="http://shivakasu.github.io/2020/06/28/webserver0/"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.css"><script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.10.5/dist/instantsearch.min.js" defer></script><link rel="stylesheet" href="https://fonts.loli.net/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: {"appId":"QBXC0PXLIT","apiKey":"517431eabeeedb8d3792391b21e8cf20","indexName":"blog","hits":{"per_page":6},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容:${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"cookieDomain":"https://xxx/","msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    title: 'Snackbar.bookmark.title',
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: w.k.x.","link":"链接: http://shivakasu.github.io/2020/06/29/phi4/","source":"来源: SHIVAKASU","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  baiduPush: false,
+  isHome: false,
+  isPost: true
+  
+}</script><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><header> <div id="page-header"><span class="pull_left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="toggle-menu pull_right close"><a class="site-page"><i class="fa fa-bars fa-fw" aria-hidden="true"></i></a></span><span class="pull_right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></span><span class="pull_right" id="search_button"><a class="site-page social-icon search"><i class="fa fa-search fa-fw"></i><span> Search</span></a></span></div></header><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="http://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">36</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">17</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fa fa-list" aria-hidden="true"></i><span> List</span><i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fa fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fa fa-film"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div></div></div><div id="mobile-sidebar-toc"><div class="toc_mobile_headline">目录</div><div class="sidebar-toc__content"><ol class="toc_mobile_items"><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#绪论"><span class="toc_mobile_items-text">绪论</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-1"><a class="toc_mobile_items-link" href="#上篇-早期希腊哲学"><span class="toc_mobile_items-text">上篇 早期希腊哲学</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#引言"><span class="toc_mobile_items-text">引言</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#1-米利都学派"><span class="toc_mobile_items-text">1 米利都学派</span></a><ol class="toc_mobile_items-child"><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1-1-泰勒斯"><span class="toc_mobile_items-text">1.1 泰勒斯</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1-2-阿那克西曼德"><span class="toc_mobile_items-text">1.2 阿那克西曼德</span></a></li><li class="toc_mobile_items-item toc_mobile_items-level-3"><a class="toc_mobile_items-link" href="#1-3-阿那克西米尼"><span class="toc_mobile_items-text">1.3 阿那克西米尼</span></a></li></ol></li><li class="toc_mobile_items-item toc_mobile_items-level-2"><a class="toc_mobile_items-link" href="#2-赫拉克利特-艾菲斯学派"><span class="toc_mobile_items-text">2 赫拉克利特(艾菲斯学派)</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true">     </i><div class="auto_open" id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-text">绪论</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#上篇-早期希腊哲学"><span class="toc-text">上篇 早期希腊哲学</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-米利都学派"><span class="toc-text">1 米利都学派</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-泰勒斯"><span class="toc-text">1.1 泰勒斯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-阿那克西曼德"><span class="toc-text">1.2 阿那克西曼德</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-阿那克西米尼"><span class="toc-text">1.3 阿那克西米尼</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-赫拉克利特-艾菲斯学派"><span class="toc-text">2 赫拉克利特(艾菲斯学派)</span></a></li></ol></li></ol></div></div></div><main id="content-outer"><div id="top-container" style="background-image: url(http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg)"><div id="post-info"><div id="post-title"><div class="posttitle">叶秀山版《西方哲学史》笔记之第二卷：古希腊罗马哲学</div></div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 发表于 2020-06-29<span class="post-meta__separator">|</span><i class="fa fa-history fa-fw" aria-hidden="true"></i> 更新于 2020-07-03</time><span class="post-meta__separator">|</span><span><i class="fa fa-inbox post-meta__icon fa-fw" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</a></span><div class="post-meta-wordcount"><i class="fa fa-file-word-o post-meta__icon fa-fw" aria-hidden="true"></i><span>字数总计:</span><span class="word-count">4.9k</span><span class="post-meta__separator">|</span><i class="fa fa-clock-o post-meta__icon fa-fw" aria-hidden="true"></i><span>阅读时长: 13 分钟</span><div class="post-meta-pv-cv"><span class="post-meta__separator">|</span><span><i class="fa fa-eye post-meta__icon fa-fw" aria-hidden="true"> </i>阅读量:</span><span id="busuanzi_value_page_pv"></span><span class="post-meta__separator">|</span><i class="fa fa-comments-o post-meta__icon fa-fw" aria-hidden="true"></i><span>评论数:</span><a href="/2020/06/29/phi4/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2020/06/29/phi4/" itemprop="commentCount"></span></a></div></div></div></div></div><div class="layout layout_post" id="content-inner">   <article id="post"><div class="article-container" id="post-content"><h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><ul>
+<li>古希腊罗马哲学，始于公元前6世纪初的早期希腊哲学，终于公元529年，东罗马帝国皇帝查士丁尼关闭雅典的柏拉图学园标志着古希腊罗马哲学的终结。</li>
+<li>西欧古典文明，是古希腊罗马哲学赖以发展的社会和文化基础，也是西方文化的一大源泉。西欧古典文明发端于公元前2000年的克里特文明，崛起于古埃及文明和两河流域文明之后，终结于公元476年西罗马帝国灭亡。西欧古典文明划分为爱琴文明、希腊古典文明、希腊化文明和罗马文明这四个阶段。</li>
+<li>西欧古典文明最早起源于爱琴海地区，在爱琴文明中，各部落历经动荡和曲折，终于形成了后来作为希腊哲学主体的希腊民族，发展出城邦奴隶制文明，也产生了萌发哲学思想的希腊神话，所以爱琴文明是希腊民族与希腊文化的摇篮。</li>
+<li>希腊古典文明时期，始于公元前6世纪初，终于公元前4世纪30年代，是西欧古典文明奠立根基和全面鼎盛的时代，也是希腊哲学产生并发展至全盛的时代。雅典民主制的确立使其称为希腊古典文明的中心，希波战争的胜利也使得早期希腊哲学向希腊本土转移而趋于兴盛，所以早期希腊哲学是科学启蒙与民主精神的产物。而后在伯利克里时期，民主政治的革新提供了较大的科学文化自由，希腊古典哲学与文化空前繁荣。希腊古典文明由盛转衰的转折点是伯罗奔尼撒战争的失败，这场战争激化了希腊城邦奴隶制的各种内在矛盾，造成了全希腊的政治秩序、精神生活与道德价值陷入极大的混乱与危机。最终，直到亚历山大大帝征服希腊和亚里士多德去世，才标志着希腊古典文明终结并进入希腊化文明。</li>
+<li>随着城邦奴隶制的内部矛盾愈益严重，小国寡民、分散自治的城邦奴隶制转向帝国型统一集权的大规模奴隶制已成为必然。而由于希腊本土城邦已经衰弱枯竭，所以只能依靠外部力量的征服来推动希腊本土的转型。于是，藉由亚历山大征服希腊，开启了近300年的希腊化文明时代。</li>
+<li>“希腊化”原意是指随着亚历山大东征，大批希腊人流向东方取得统治地位，并将希腊文化播撒到广大的东方世界，同时，与东方文明的交流也深刻影响了希腊文化，由此演变为一种融合希腊古典文化与东方文化的多民族、多元化的新型文明。这场文化大融合影响深远，一方面影响了东方原本的传统文化，为后世伊斯兰阿拉伯文化吸纳希腊文化提供了历史准备，另一方面也让希腊文化与犹太教的希伯来文化相结合，为基督教神学的诞生作了早期铺垫。</li>
+<li>随着帝国型奴隶制的内在矛盾日益凸显，三大王国腐败衰弱，最终被罗马人征服。罗马帝国的崛起，终结了希腊化时代，希腊文化却逐渐融入了罗马文明，被罗马人延续并传播下去。而到了罗马文明后期，由于贵族奴隶制所导致的腐败，罗马帝国也不可避免地衰败下去，最终无力抵御蛮族入侵，走向了灭亡。</li>
+<li>远古的希腊人由于认识能力的局限，还不能用科学的思维方式理解自然力与人类自身，主要采用神话的形象思维方式去解释世界。希腊神话有两种演变途径，一是通向因对自然力与支配人类命运的力量的恐惧无知而发生的宗教，被吸纳为古希腊宗教思想的主要组成部分，二是在形象地解释世界中孕育了哲学思想，成为产生古希腊哲学的温床。</li>
+</ul>
+<h1 id="上篇-早期希腊哲学"><a href="#上篇-早期希腊哲学" class="headerlink" title="上篇 早期希腊哲学"></a>上篇 早期希腊哲学</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><ul>
+<li>早期希腊哲学发生在希腊古典文明的前期，是在希腊城邦奴隶制基本确立并趋向成熟的历史背景中产生与发展的。</li>
+<li>亚里士多德认为，人们研究哲学的起因是诧异，希腊哲学产生的必要社会条件与动因是人们的闲暇与求知。希波战争的胜利促进了奴隶制商品经济的发展，为人们探究无功利性的哲学提供了闲暇的保证，加之人们对天地万物、宇宙奥秘的诧异与探究，使一种超越了实用技术的科学思想产生出来，它促使孕育于希腊神话与宗教中的哲学思想脱胎而出，独立形成一种与科学思想融为一体又涵括全部知识的自由的学问。</li>
+<li>早期希腊哲学的一个显著特征是哲学与科学思想相辅相成、互动互渗。一方面，科学思想令原始哲学思维摆脱了与宗教、神话相关的神秘主义色彩。另一方面，希腊哲学不局限于对自然表面现象的简单解释和功利性的实用技术层面，开创了以科学理性探索自然奥秘的风气，促使希腊早期的科学思想逐步深化。正是由于早期希腊哲学重点探究自然万物的本原，与自然科学思想水乳交融，所以也被称早期自然哲学。</li>
+<li>早期希腊哲学有两条主要线索，一是伊奥尼亚哲学，包括米利都学派和爱菲斯学派，二是南意大利哲学，包括毕达哥拉斯学派和爱利亚学派。后来的恩培多克勒、阿那克萨戈拉、德谟克利特等人的学说都是对这两种哲学传统的综合，而不仅仅是对某一条路线的延伸。</li>
+<li>早期希腊哲学的中心主题是“本原”。伊奥尼亚哲学传统注重对生灭变动的自然的观察经验作哲学概括，比如直观的水火土气，南意大利哲学传统则注重对世界全体的数理结构与本质作形而上的思辨，比如高度抽象的“数”和“一”。后来的哲学家综合了这两种传统，主张微观的物质性基本粒子是万物的本原，克服了前两种哲学中现象世界和本质世界的对立，将本原论提高到一个崭新的水平。</li>
+<li>早期希腊哲学的另一个重要主题是宇宙论问题，即宇宙的生成、演化与结构问题。早先的哲学家简单地用某种具体物质本原的物态变化来说明宇宙与天体的生成，朴素而直观。随着科学思想的进步，形成了两种对近现代西方宇宙学说有深远影响的理论，一是有限宇宙与天体结构说，有数理天文学思想萌芽的特色，二是漩涡运动起源说。</li>
+</ul>
+<h2 id="1-米利都学派"><a href="#1-米利都学派" class="headerlink" title="1 米利都学派"></a>1 米利都学派</h2><ul>
+<li>希腊哲学最早开创于米利都，泰勒斯、阿那克西曼德和阿那克西米尼三代传人是希腊最早的哲学家。米利都学派开创了伊奥尼亚哲学传统，包含着一种朴素的唯物论思想。</li>
+</ul>
+<h3 id="1-1-泰勒斯"><a href="#1-1-泰勒斯" class="headerlink" title="1.1 泰勒斯"></a>1.1 泰勒斯</h3><ul>
+<li>泰勒斯没有留下任何著述，只有极少的第二手转述资料。亚里士多德最早指出了泰勒斯的本原论主张，认为泰勒斯是哲学的创始人。自亚里士多德之后，学界公认泰勒斯是第一位哲学家。</li>
+<li>关于泰勒斯的生卒年没有可靠记载，但是他曾准确预言过一次日食，把那年作为他的鼎盛年，可以大致推算出他的生卒年代。</li>
+<li>泰勒斯名列“七贤”之一，不仅在经济事务和政治活动中比较活跃，还是“七贤”中唯一一位懂得自然哲学、追求科学智慧的学者，主要在数学和天文学领域取得了杰出成就。他向埃及人学过几何学，但没有局限在描述经验上，而是高度概括出了五条几何定理。他热衷于观测天文现象，总结了许多天体运行的规律。</li>
+<li>亚里士多德在《形而上学》中说：“在第一批哲学家中间，大多数认为质料性的本原是所有事物的唯一本原”。泰勒斯就是这一派哲学的创始人，他最先用哲学语言提出了“水是本原”这一基本命题，标志着早期希腊自然哲学已从神话世界观脱胎而出，开始用科学的理性思维来理解自然世界。</li>
+<li>关于泰勒斯为什么认为水是本原，古代学者有两种解释。一是生物学的解释，据亚里士多德推测，泰勒斯正是观察到所有事物的滋养物都是潮湿的，同时主张物活论的泰勒斯认为万物都有来源于热的一种灵魂或活力，所以水作为湿气与热的共同来源就会被认为是万物本原。二是天文、气象学的解释，艾修斯认为，水在自然中的物态变化会让人误以为它是最容易变化、最有活力的一种元素，泰勒斯对水的理解可能就是如此朴素。</li>
+<li>泰勒斯的本原论是一种原始、自发的朴素唯物论观点。伊奥尼亚的哲学家们都将世界的本原归结为某种特殊的物质，是因为他们还没有形成普遍物质的概念，所以也更不可能高度抽象出“一”、“存在”这样的概念。</li>
+<li>泰勒斯也是最早研究宇宙论或宇宙生成的哲学家，基于他的本原论，他认为宇宙与天体是由水生成的，主张一种水成论的宇宙观。太阳与星辰的“火”并非是水的对立面，而是水蒸气的精致部分燃成以太的结果。由于希腊人所处的大地被海洋包围，所以泰勒斯也自然而然地以为大地是浮在水上的。泰勒斯的宇宙观虽然很幼稚，但是意义在于突破了神创宇宙观，开启了一种自然哲学的宇宙论研究。</li>
+<li>泰勒斯还提出了一种“物活论”的思想，认为万物皆有灵魂与神灵。但他所谓的灵魂与神灵并不是某种精神实体或是具有神话色彩的神，只不过是对宇宙万物中蕴含的生命力、活力的一种模糊的表达，毕竟他认为磁石的相互吸引也是灵魂在起作用，所以与我们定义的唯心主义还是很不同的。</li>
+</ul>
+<h3 id="1-2-阿那克西曼德"><a href="#1-2-阿那克西曼德" class="headerlink" title="1.2 阿那克西曼德"></a>1.2 阿那克西曼德</h3><ul>
+<li>阿那克西曼德是泰勒斯的好友和学生，也是一名出色的科学思想家。据史料记载，他通过实地考察撰写了《大地描述》，记录了各地的地理情况和民情风貌，同时绘制了第一张希腊地图。他还热衷于天文、气象的观测，发明了第一个日晷指时针，最先画出了陆地和海洋的轮廓，制造了可能是某个天体模型的“天球”。</li>
+<li>阿那克西曼德提出“本原是阿派朗”，阿派朗的希腊文是 apeiron，原意是“无限制、无界限、无规定、无定形”。阿派朗的定义很容易被曲解，它不是什么精神实体，不是抽象的“无限”，也不是类似原子的“普遍物质”。阿派朗的提出仅仅是为了解决泰勒斯的水为本原难以说明生成万物与自然界的多样性的统一的问题，因为水的物态变化始终是狭隘的，所以阿那克西曼德在此基础上提出了一种比水更无定形、更有变化能力的东西，在这个意义上，阿派朗和泰勒斯的水一样，都是一种具体的、物质性的质料，所以依然没有脱离朴素唯物论的思想。这一点从他的传人阿那克西米尼的观点上可以推断出来，阿派朗可能只是对“无定形”的一种不明晰的表述，所以继承者阿那克西米尼才会把这种无定形具象化为“气”，提出“本原是气”。</li>
+<li>阿派朗在空间的量、运动与时间上是无限的，因为包括阿那克西曼德在内的有一部分哲学家认为，无限是神圣的，无限包容一切又支配一切，所以无限自身再没有本原，只能是它作为其他万物的本原。</li>
+<li>阿那克西曼德对本原论的深化，还体现在他认为阿派朗的运动变化具有万物产生于它、毁灭后又复归于它的必然性，这相当于明确提出了本原生成与变易万物是处在时间进程中的、有必然规律的深刻思想。</li>
+<li>阿派朗中潜蕴着无限多的“对立”，但阿那克西曼德并没有把这种对立的范畴上升到普遍法则、辩证法规律的高度，他仅仅把对立解释为冷热、干湿这样的基本物态成分。阿那克西曼德基于此提出了一种“分离”说的宇宙论，认为永恒运动的、无限的阿派朗将其潜蕴的无限多的“对立”分离出来，就形成了无数个世界与宇宙万物。这里的“无数个世界”颇具争议，有人认为是时间上的连续相继，也有人认为是空间上的同时并存。此外，对于阿派朗具体以一种什么样的运动分离成万物又使万物复归于它，阿那克西曼德也没有详细解释，引起了学界的争论。</li>
+<li>阿那克西曼德最先对各个行星的大小和距离进行估算，认为大地是宇宙的中心，提出了西方天文学史上最早的地心说。他还基于经验观察解释了风雨雷电等自然现象，虽然很幼稚很粗糙，但是却开创了气象学的研究。</li>
+<li>阿那克西曼德最早提出了关于动物与人类起源的论述，他认为人是由鱼变来的，因为潮湿的东西中更可能孕育生命。虽然也很幼稚，但已经有了朴素的生物进化思想的萌芽了。</li>
+</ul>
+<h3 id="1-3-阿那克西米尼"><a href="#1-3-阿那克西米尼" class="headerlink" title="1.3 阿那克西米尼"></a>1.3 阿那克西米尼</h3><ul>
+<li>阿那克西米尼是阿那克西曼德的学生，也是米利都衰落前的最后一位本土哲学家。他与出生于伊奥尼亚的毕达哥拉斯貌似是朋友，后来毕达哥拉斯跑到克罗顿开创了南意大利哲学传统，很可能曾受到过米利都学派的思想熏陶。</li>
+<li>阿那克西米尼也认为本原应该是无限的，但他不认同本原是完全无定形、不可捉摸的，所以他提出了“气是本原”，把多样性的物质世界统一于一种具体物质形态的规定性。他的本原论有三个思想特征：<ul>
+<li>综合了数量、空间的无定形和质上的确定性。水太狭隘与肤浅，阿派朗又太偏想象性的推断，所以“气是本原”是对二者的继承、发展与超越，而不是单纯的从无定形到有定形的思想倒退，毕竟阿派朗也算不上一种高度抽象的理性思辨。</li>
+<li>无限的气永恒运动变化，内在动力因是气内的冷热、干湿等对立物态成分。泰勒斯压根没提过动力因，而阿那克西曼德的分离说仅仅把这种对立作为分离的对象，却对分离的动力因避而不谈，阿那克西米尼则明确地指出这些对立成分是一切运动变化的动因。</li>
+<li>基于“气是本原”，阿那克西米尼进而解释了万物的起源与复归、宇宙论乃至生命与灵魂，形成了一套一以贯之、自圆其说的哲学理论系统。</li>
+</ul>
+</li>
+<li>阿那克西米尼认为气生万物的动力因是内部冷热的对立，具体的变化过程是冷热所造成的气的稀散与浓聚。冷热是物态成分，稀散与浓聚是空间中的分布，所以该思想蕴含着空间量的规定性。此外，单一物质在空间量上的变化能衍生出万物，也蕴含了量变引起质变的思想萌芽，只不过阿那克西米尼没有明确探讨到“质”的层面。</li>
+<li>阿那克西米尼首次用气来解释生命与灵魂的本性，将气本原说扩展到生命有机体的范围，大概是因为他观察到呼吸是维持生命的关键。他虽然提到了灵魂，但他是把灵魂与生命等价，所以并没有探讨到精神意识的层面。米利都学派不可能触及到精神意识问题，因为当时还没有开始探究精神意识的科学认识前提与逻辑思想前提。阿那克西米尼甚至认为神也诞生自气本原，所以气是比神更神圣的东西。</li>
+<li>基于气本原说，阿那克西米尼提出了气成宇宙论，认为宇宙是从气生成的，宇宙中充满了气，各个天体规律性的运动是靠气的推动所维持的。他是第一位提出天体按照圆形轨道作有规律运行的科学思想家，对后来的各种天体运行结构论都有着开创性的影响。</li>
+<li>气本原说本质上是对阿派朗的稍加改良，这里的气与现在空气的概念不同，它仍是一种不明晰的物态成分，所以当时对于气并没有什么粒子层面、物理层面的认知。气和阿派朗其实并没有太大区别，阿那克西米尼真正的伟大之处是用本原论相对完整又严谨地解释了世界。</li>
+</ul>
+<h2 id="2-赫拉克利特-艾菲斯学派"><a href="#2-赫拉克利特-艾菲斯学派" class="headerlink" title="2 赫拉克利特(艾菲斯学派)"></a>2 赫拉克利特(艾菲斯学派)</h2><p>- </p>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://shivakasu.github.io/2020/06/29/phi4/">http://shivakasu.github.io/2020/06/29/phi4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://shivakasu.github.io">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%93%B2%E5%AD%A6/">哲学    </a></div><div class="post_share"><div class="social-share" data-image="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><a class="reward-button button--primary button--animated"> <i class="fa fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="lazyload post-qr-code__img" src="http://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信"><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="lazyload post-qr-code__img" src="http://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝"><div class="post-qr-code__desc">支付宝</div></li></ul></div></a></div><nav class="pagination_post" id="pagination"><div class="next-post pull-full"><a href="/2020/06/28/webserver0/"><img class="next_cover lazyload" data-src="http://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="label">下一篇</div><div class="next_info"><span>tinyhttpd 源码阅读</span></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fa fa-fw fa-thumbs-up" aria-hidden="true"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/02/18/phi1/" title="《西方哲学史》2：中世纪时期"><img class="relatedPosts_cover lazyload"data-src="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-02-18</div><div class="relatedPosts_title">《西方哲学史》2：中世纪时期</div></div></a></div><div class="relatedPosts_item"><a href="/2020/02/05/phi0/" title="《西方哲学史》1：古希腊罗马时期"><img class="relatedPosts_cover lazyload"data-src="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-02-05</div><div class="relatedPosts_title">《西方哲学史》1：古希腊罗马时期</div></div></a></div><div class="relatedPosts_item"><a href="/2020/02/22/phi2/" title="《西方哲学史》3：16-18世纪西欧哲学"><img class="relatedPosts_cover lazyload"data-src="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-02-22</div><div class="relatedPosts_title">《西方哲学史》3：16-18世纪西欧哲学</div></div></a></div><div class="relatedPosts_item"><a href="/2020/03/12/phi3/" title="《西方哲学史》4：德国古典哲学"><img class="relatedPosts_cover lazyload"data-src="http://file.shivakasu.cn/11b6eb34f8286c1cd02c/phi0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> 2020-03-12</div><div class="relatedPosts_title">《西方哲学史》4：德国古典哲学</div></div></a></div></div><div class="clear_both"></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fa fa-comments fa-fw" aria-hidden="true"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var notify = false == true ? true : false;
+var verify = true == true ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'qIfwEiuSjlc5vyminB1rx2qX-gzGzoHsz',
+  appKey:'erfVXuW3AybzbWGqxSGxnBRp',
+  placeholder:'来都来了，说点儿什么吧~',
+  avatar:'monsterid',
+  guest_info:guest_info,
+  pageSize:'10',
+  lang:'zh-cn',
+  recordIP: true
+});</script></div></div></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By w.k.x.</div><div class="framework-info"><span>driven by </span><a href="http://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a></div><div class="footer_custom_text">得即高歌失即休 多愁多恨亦悠悠</div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"><span>京ICP备19001969号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><i class="fa fa-book" id="readmode" title="阅读模式"></i><i class="fa fa-plus" id="font_plus" title="放大字体"></i><i class="fa fa-minus" id="font_minus" title="缩小字体"></i><a class="translate_chn_to_cht" id="translateLink" href="javascript:translatePage();" title="简繁转换" target="_self">繁</a><i class="darkmode fa fa-moon-o" id="darkmode" title="夜间模式"></i></div><div id="rightside-config-show"><div id="rightside_config" title="设置"><i class="fa fa-cog" aria-hidden="true"></i></div><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fa fa-comments">  </i></a><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="https://cdn.jsdelivr.net/gh/jerryc127/butterfly_cdn@2.1.0/js/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js" async=""></script><div class="search-dialog" id="algolia-search"><div class="search-dialog__title" id="algolia-search-title">Algolia</div><div id="algolia-input-panel"><div id="algolia-search-input"></div></div><hr><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-stats"></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
