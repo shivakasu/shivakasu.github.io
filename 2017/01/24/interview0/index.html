@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>无聊的知识点之系统 | SHIVAKASU</title><meta name="description" content="操作系统什么是操作系统？ 是管理计算机硬件与软件资源的程序。 本质上是运行在计算机上的软件。 为用户提供一个与系统交互的操作界面。 分为内核与外壳，内核程序负责操作硬件，管理系统的进程、内存、设备驱动程序、文件和网络系统等   进程、线程和协程 进程是资源分配的最小单位，线程是CPU调度的最小单位。 线程必须在进程下行进，一个进程可以包含多个线程。 线程之间数据容易共享，进程之间数据不容易共享，需"><meta name="keywords" content="面试"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="canonical" href="https://shivakasu.cn/2017/01/24/interview0/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="无聊的知识点之系统"><meta property="og:url" content="https://shivakasu.cn/2017/01/24/interview0/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="操作系统什么是操作系统？ 是管理计算机硬件与软件资源的程序。 本质上是运行在计算机上的软件。 为用户提供一个与系统交互的操作界面。 分为内核与外壳，内核程序负责操作硬件，管理系统的进程、内存、设备驱动程序、文件和网络系统等   进程、线程和协程 进程是资源分配的最小单位，线程是CPU调度的最小单位。 线程必须在进程下行进，一个进程可以包含多个线程。 线程之间数据容易共享，进程之间数据不容易共享，需"><meta property="og:image" content="https://file.shivakasu.cn/48b4c92f979726d97437/cs.jpg"><meta property="article:published_time" content="2017-01-23T16:43:20.000Z"><meta property="article:modified_time" content="2017-01-24T15:34:20.000Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="无聊的知识点之 Java" href="https://shivakasu.cn/2017/01/25/interview1/"><link rel="next" title="Anaconda中关于Qt的bug" href="https://shivakasu.cn/2016/10/27/bugfix3/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: w.k.x.","link":"链接: ","source":"来源: SHIVAKASU","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">19</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#操作系统"><span class="toc-text">操作系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是操作系统？"><span class="toc-text">什么是操作系统？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-text"> </span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程、线程和协程"><span class="toc-text">进程、线程和协程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程状态转换"><span class="toc-text">进程状态转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程调度算法"><span class="toc-text">进程调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程同步"><span class="toc-text">进程同步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进程间通信"><span class="toc-text">进程间通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#死锁"><span class="toc-text">死锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步、异步、阻塞、非阻塞"><span class="toc-text">同步、异步、阻塞、非阻塞</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#虚拟内存-amp-虚拟地址"><span class="toc-text">虚拟内存&amp;虚拟地址</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#磁盘调度算法"><span class="toc-text">磁盘调度算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算机启动过程"><span class="toc-text">计算机启动过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件系统"><span class="toc-text">文件系统</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络"><span class="toc-text">网络</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OSI七层模型总览"><span class="toc-text">OSI七层模型总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据链路层"><span class="toc-text">数据链路层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#网络层"><span class="toc-text">网络层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#传输层"><span class="toc-text">传输层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TCP如何保证可靠传输？"><span class="toc-text">TCP如何保证可靠传输？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP"><span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-长连接-amp-短连接"><span class="toc-text">HTTP 长连接 &amp; 短连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP2-0的改进"><span class="toc-text">HTTP2.0的改进</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Unix五种-I-O-模型"><span class="toc-text">Unix五种 I&#x2F;O 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浏览器访问网页的详细过程"><span class="toc-text">浏览器访问网页的详细过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#场景设计——秒杀"><span class="toc-text">场景设计——秒杀</span></a></li></ol></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://file.shivakasu.cn/48b4c92f979726d97437/cs.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无聊的知识点之系统</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2017-01-24 00:43:20"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2017-01-24</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2017-01-24 23:34:20"><i class="fas fa-history fa-fw"></i> 更新于 2017-01-24</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0/">日常专业学习</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">11.1k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 33 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2017/01/24/interview0/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2017/01/24/interview0/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><h3 id="什么是操作系统？"><a href="#什么是操作系统？" class="headerlink" title="什么是操作系统？"></a>什么是操作系统？</h3><ul>
+<li>是管理计算机硬件与软件资源的程序。</li>
+<li>本质上是运行在计算机上的软件。</li>
+<li>为用户提供一个与系统交互的操作界面。</li>
+<li>分为内核与外壳，内核程序负责操作硬件，管理系统的进程、内存、设备驱动程序、文件和网络系统等</li>
+</ul>
+<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><h3 id="进程、线程和协程"><a href="#进程、线程和协程" class="headerlink" title="进程、线程和协程"></a>进程、线程和协程</h3><ul>
+<li>进程是资源分配的最小单位，线程是CPU调度的最小单位。</li>
+<li>线程必须在进程下行进，一个进程可以包含多个线程。</li>
+<li>线程之间数据容易共享，进程之间数据不容易共享，需要复杂的IPC技术。</li>
+<li>进程维护静态资源，如地址空间、打开的文件句柄集、文件系统状态、信号处理handler等。线程维护动态资源，如运行栈、调度相关的控制信息、待处理的信号集等。</li>
+<li>线程轻量级，进程重量级。进程的创建和删除都需要系统调度资源，系统开销大。</li>
+<li>单核只能并发，多核和多cpu可以并行，区别在于多个任务是否同时运行。线程只支持多核，进程还支持多cpu。</li>
+<li>进程间不会相互影响，一个线程挂掉将导致整个进程挂掉，因为线程错误一般都是内存错误，当一个线程向非法地址读取或者写入，无法确认这个操作是否会影响同一进程中的其它线程，所以只能让整个进程一起挂掉。</li>
+<li>协程比线程更轻量级，协程不由系统内核管理，而是完全由用户程序所控制，所以协程也叫用户态线程。相比于线程，没有用户态与内核态切换的开销。</li>
+<li>一个线程可以有多个协程，一个进程也可以单独拥有多个协程。</li>
+<li>线程进程都是同步机制，而协程是异步。</li>
+<li>线程是抢占式，而协程是非抢占式的，所以需要用户自己实现协程切换的逻辑。</li>
+</ul>
+<h3 id="进程状态转换"><a href="#进程状态转换" class="headerlink" title="进程状态转换"></a>进程状态转换</h3><p><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/6e63d16758c8c876d584/inter0.png" alt=""></p>
+<h3 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h3><ul>
+<li><strong>先来先服务(FCFS)</strong>：非抢占式，缺陷是短作业等待时间过长</li>
+<li><strong>短作业优先(SJF)</strong>：非抢占式，缺陷是长作业等待时间过长</li>
+<li><strong>最短剩余时间优先(SRTF)</strong>：短作业优先的抢占式版本，当一个新作业到达时，如果剩余运行时间比当前进程短，则挂起当前进程，运行新作业</li>
+<li><strong>时间片轮转(Round Robin, RR)</strong>：效率和时间片大小有关，时间片小则进程切换的代价大，时间片大则不能保证实时性</li>
+<li><strong>最高响应比优先(HRRN)</strong>：同时考虑作业的等待时间和估计的运行时间，是对FCFS和SJF的一种综合平衡。</li>
+<li><strong>优先级调度</strong>：调度方式分为剥夺式和非剥夺式，优先级分为静态和动态。</li>
+<li><strong>多级反馈队列</strong>：当前被公认的一种较好的进程调度算法，是时间片轮转和优先级调度的结合。设置多个作业队列，赋予不同的优先级，优先级越高的队列时间片就越小，新作业首先进入优先级最高的队列，如果它在一个时间片结束时尚未完成，就被转入下一级队列，按FCFS原则等待调度执行，如此递推。</li>
+</ul>
+<h3 id="进程同步"><a href="#进程同步" class="headerlink" title="进程同步"></a>进程同步</h3><ul>
+<li><strong>哲学家进餐问题</strong>：必须同时拿起左右两根筷子，只有在两个邻居都没有进餐的情况下才允许进餐</li>
+<li><strong>读者写者问题</strong>：一个变量 count 记录等待的读者数，互斥量 count_mutex 用于对 count 加锁，互斥量 data_mutex 用于对读写的数据加锁。读者读之前在count_mutex下令count+1，读之后在count_mutex下令count-1。count=1时第一个读者要对数据加锁，count=0时读者清空，释放data_mutex。</li>
+</ul>
+<h3 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h3><ul>
+<li><strong>管道</strong>：本质上就是一个内核缓冲区，通过内核缓冲区实现数据传输，只支持半双工(数据只能单向传输，也就是双方不能同时发送)，因此要分别建立读管道和写管道。<ul>
+<li><strong>匿名管道(pipe)</strong>：只能在父子进程或兄弟进程间使用。</li>
+<li><strong>命名管道(FIFO)</strong>：不局限于父子进程和兄弟进程，因为命名管道有一个名字，对应于一个磁盘索引节点，任何有相应权限的进程都可以对它进行访问。</li>
+</ul>
+</li>
+<li><strong>消息队列(MessageQueue)</strong>：相比于命名管道，消息队列可以独立于发送和接收进程而存在，可以避免命名管道的同步阻塞问题(但是命名管道好像也有非阻塞模式)，可以通过消息类型有选择地接收数据。</li>
+<li><strong>共享存储(SharedMemory)</strong>：多个进程共享同个存储区，是最快的IPC。因为管道和消息队列都是内核对象，所执行的操作也都是系统调用，需要执行四次数据拷贝，即输入-&gt;内核-&gt;内存-&gt;内核-&gt;输出，而进程可以直接读写共享内存，所以只需要两次数据拷贝，即输入-&gt;内存-&gt;输出。</li>
+<li><strong>信号量(Semaphore)</strong>：是一个计数器，只用于进程间的互斥与同步，控制对共享数据对象的访问，而不直接用于存储进程间通信数据。</li>
+<li><strong>套接字(Socket)</strong>：可用于不同主机的进程间进行全双工网络通信。</li>
+<li><strong>信号(signal)</strong>：Unix系统中的方法。信号是在软件层次上对中断机制的一种模拟，是一种异步通信方式，可以直接进行用户空间进程和内核进程之间的交互。</li>
+</ul>
+<h3 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h3><ul>
+<li>必要条件：互斥(独占资源)，请求和保持(已占有资源还可以请求新资源)，不剥夺(资源只能被释放不能被抢夺)，环路等待</li>
+<li>处理方法：<ul>
+<li>鸵鸟策略：解决死锁代价很高，如果死锁的影响并不严重，可以忽略它。</li>
+<li>死锁检测：画出资源分配图，删除可以得到资源从而运行完成的进程节点，如果资源分配图不可完全简化，即最终存在环，说明存在死锁。</li>
+<li>死锁恢复：抢占恢复，回滚恢复，杀死进程恢复</li>
+<li>死锁预防(程序运行前的叫预防)：<ul>
+<li>破坏互斥条件，把独占资源变成共享资源。</li>
+<li>破坏请求和保持条件，要么全部申请到，要么都不申请。</li>
+<li>破坏不剥夺条件，允许资源抢占。</li>
+<li>破坏环路等待条件，资源有序分配。</li>
+</ul>
+</li>
+<li>死锁避免(程序运行时的叫预防)：对于某时刻的资源分配状态(已分配、待分配和可用)，如果存在一种调度顺序使所有进程最后都能运行完毕，就不会发生死锁，这时的资源分配状态称为安全状态。银行家算法就是要保证每次资源分配后都是安全状态，过程和简化资源分配图差不多，就是不断找到可用资源能够满足待分配资源的进程，然后删除该进程，把其分配到的资源还给可用资源，表示该进程运行完毕，如果最终所有进程都能执行完毕，就证明是安全状态。</li>
+</ul>
+</li>
+</ul>
+<h3 id="同步、异步、阻塞、非阻塞"><a href="#同步、异步、阻塞、非阻塞" class="headerlink" title="同步、异步、阻塞、非阻塞"></a>同步、异步、阻塞、非阻塞</h3><ul>
+<li>同步和异步是消息通信机制，仅对有通信的一组任务而言，假设任务A和任务B有消息通信，如果A有时需要暂停执行来等待B的某个回应，同理B有时也会等待A，那么A与B就是同步通信的，如果A和B都不需要暂停来等待回应，就是异步通信，异步通信需要额外的手段来保证通信的可靠性，比如重试、消息队列等。</li>
+<li>阻塞和非阻塞用于描述任务执行者等待任务时的状态，假设执行者在某个任务中陷入了等待，运算资源被闲置，如果执行者可以在等待该任务的同时执行其他的任务，这个状态就是非阻塞，如果执行者无法执行其他任务，只能死等着执行当前任务，这个状态就是阻塞。</li>
+</ul>
+<h3 id="虚拟内存-amp-虚拟地址"><a href="#虚拟内存-amp-虚拟地址" class="headerlink" title="虚拟内存&amp;虚拟地址"></a>虚拟内存&amp;虚拟地址</h3><ul>
+<li><strong>虚拟内存</strong>：由于内存比硬盘快很多，所以造成了大量的由硬盘读取的数据无法一下子读取，所以就产生了虚拟内存技术，在空闲时候预读数据到虚拟内存上，其实虚拟内存就是硬盘空间，但是由于数据已经经过处理所以比起单纯读取硬盘要快很多。</li>
+<li><strong>虚拟地址</strong>：CPU的地址总线决定的最大寻址空间，程序产生的地址都是虚拟地址。由于局部性原理，程序的数据往往不需要全部加载到内存，内存与外存的页也可以置换，所以程序的虚拟地址空间可以比实际物理内存大。此外，有了虚拟地址，程序就不再使用写死的物理地址，不同进程的相同的虚拟地址可以被映射到不同的物理地址，调度更加灵活。虚拟地址分成两个部分，前面存储页面号，后面存储页内偏移量。</li>
+<li>虚拟内存与虚拟地址没什么关系。</li>
+<li><strong>页表</strong>：虚拟地址切分成了多个大小相同的页，物理内存切分成了多个与页大小相同的框，页表记录的是页编号与框编号的映射关系。内存管理单元(MMU)是一种计算机硬件，负责虚拟地址和物理内存的转换，也负责维护页表。现代操作系统中，每个进程都有单独的虚拟地址空间，所以每个进程都有自己的页表，只是页表的物理地址不同，进程的PCB中记录着自己的页表起始地址和页表长度，当进程被CPU执行时，页表起始地址和页表长度被写入CPU的页表寄存器。</li>
+<li><strong>多级页表如何节约内存</strong>：如果要把所有页表项放在内存里，多级页表不会节省空间，反而会因为多了一层索引结构占用更多空间。多级页表之所以节省空间，就是因为不必把所有页表项放在内存。一级页表是对二级页表的索引，二级页表存储页表项，所以一级页表相当于对所有的页表项分组，只要一级页表在内存里，就可以根据索引实现在内存与外存之间置换二级页表。根据局部性原理，可以假设一段时间内程序对内存的访问只局限在一组页表项内部，所以二级页表的置换理论上不会太频繁，不会消耗太多时间。因此，多级页表实际上是用时间换空间。</li>
+<li><strong>CPU访存过程</strong>：先将具体的虚拟地址/页面大小，结果的商作为页表号(多级页表才有页表号)，余数作为页内偏移。然后根据页表寄存器的值找到页表，根据页表号和页内偏移定位页表项(页-框对)，查询页表项就得到了页框。</li>
+<li><strong>TLB</strong>：Translation Lookaside Buffer，根据功能也被叫做快表，是一个CPU里的高速寄存器，存放了近期访问过的页表项。CPU先查TLB，如果存在对应的页表项，就可以直接访问最终物理地址。否则，CPU对内存的一次访问就需要访问两次物理内存，先取页框，再访问最终物理地址。</li>
+<li><strong>页面置换算法</strong>：如果页表里也没有对应的页表项，就需要触发缺页中断，与外存进行页面置换。页面置换算法的主要目标是使页面置换频率(缺页率)最低。<ul>
+<li>最佳置换算法(OPT)：被换出的页面将是未来最长时间内不再被访问的，能保证缺页率最低，但是无法实现，只能作为评价其他算法的标准。</li>
+<li>最近最久未使用(LRU)：既然无法预知未来的情况，就看过去的页面使用情况。可以用链表实现，页面一旦被访问就移到表头。</li>
+<li>最近未使用(NRU)，先进先出(FIFO，缺页率高)，时钟(Clock)</li>
+</ul>
+</li>
+<li><strong>分页与分段比较</strong>：<ul>
+<li>分页对用户不可见，分段对用户可见</li>
+<li>页大小固定且由系统决定，段大小不固定，由程序决定</li>
+<li>页地址一维，段地址二维</li>
+<li>分段更容易实现信息共享和保护</li>
+<li>分页产生内存碎片、不产生外存碎片。因为页大小固定，内存碎片指的就是分配给程序的页的内部冗余空间。同时，因为页很小且是系统分配的，所以能保证物理内存是页大小的整数倍，没有外存碎片指的就是物理内存在划分成页后没有剩余。</li>
+<li>分段产生外存碎片、不产生内存碎片。因为段大小不一，有用户程序分配，所以不太可能完美地刚好分完物理内存，外存碎片指的就是物理内存在划分成段后的剩余未分配空间。同时，因为段是用户程序分配的，能够保证用多少就分配多少，所以段的内部没有内存碎片。</li>
+<li>段页式存储既有内存碎片也有外存碎片。</li>
+</ul>
+</li>
+</ul>
+<h3 id="磁盘调度算法"><a href="#磁盘调度算法" class="headerlink" title="磁盘调度算法"></a>磁盘调度算法</h3><ul>
+<li><strong>先来先服务(FCFS)</strong>：公平，简单，但未对寻道做优化，平均寻道时间可能较长。</li>
+<li><strong>最短寻道时间优先(SSTF)</strong>：平均寻道时间短，但是不公平，两端的磁道请求容易出现饥饿现象。</li>
+<li><strong>电梯算法(SCAN)</strong>：保持一个方向运行，直到该方向没有请求为止，解决了 SSTF 的饥饿问题</li>
+</ul>
+<h3 id="计算机启动过程"><a href="#计算机启动过程" class="headerlink" title="计算机启动过程"></a>计算机启动过程</h3><ul>
+<li>第一阶段：BIOS(Basic Input/Output System)<ul>
+<li>按下电源后，CPU立即从地址FFFF:0000H处开始执行指令，放在这里的只是一条跳转指令，跳到系统BIOS。</li>
+<li>BIOS中主要存放自诊断程序、CMOS设置程序、系统自动装载程序、主要I/O驱动程序和中断服务。</li>
+<li>BIOS首先硬件自检，成功后进入下一阶段。</li>
+</ul>
+</li>
+<li>第二阶段：MBR(Master Boot Record)<ul>
+<li>BIOS根据用户指定的引导顺序从软盘、硬盘或是可移动设备中读取启动设备的MBR，并放入指定的内存地址中。</li>
+<li>MBR是该设备的第一个扇区的前512个字节。第1-446字节记录调用操作系统的机器码，第447-510字节记录分区表，第511-512字节记录MBR签名(0x55和0xAA)。</li>
+</ul>
+</li>
+<li>第三阶段：硬盘启动<ul>
+<li>如果操作系统安装在主分区，四个主分区里只有一个是激活的，计算机读取激活分区的第一个扇区，叫做“卷引导记录”(VBR)，获取操作系统的地址并加载。</li>
+<li>如果操作系统安装在扩展分区或逻辑分区，在读取MBR前446个字节后，会运行事先安装的启动管理器(boot loader)，由用户选择启动哪一个操作系统。</li>
+</ul>
+</li>
+<li>第四阶段：操作系统<ul>
+<li>操作系统的内核首先被载入内存，然后启动各种乱七八糟的进程。</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><ul>
+<li>inode：一个文件占用一个 inode，记录文件的属性，同时记录此文件的内容所在的 block 编号</li>
+<li>block：记录文件的内容，文件太大时，会占用多个 block</li>
+<li>Ext2有inode和block，先查inode，再读block</li>
+<li>FAT没有inode，只有block，每个block中存储着下一个block的编号</li>
+<li>Ext3只增加了日志功能，Ext4修改了Ext3中部分重要的数据结构，提供更佳的性能和可靠性。</li>
+</ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><ul>
+<li><strong>ISP(Internet Service Provider)</strong>：互联网服务提供商，如移动联通，拥有通信线路以及路由器等联网设备，个人或机构向 ISP 缴纳一定的费用就可以接入互联网。目前的互联网采用多层次 ISP 结构，根据覆盖面积的大小分为第一层 ISP、区域 ISP 和接入 ISP</li>
+<li><strong>OSI七层模型</strong>：物理层，数据链路层，网络层，传输层，会话层，表示层，应用层</li>
+<li><strong>TCP/IP五层模型</strong>：物理层，数据链路层，网络层，传输层，应用层</li>
+<li><strong>TCP/IP四层模型</strong>：网络接口层，网际层，传输层，应用层</li>
+<li>数据通过物理层发送和接受，从物理层到高层是不断拆开首部和尾部的解析过程，从高层到物理层是不断添加下层协议首部和尾部的封装过程。</li>
+<li><strong>各层解决了什么问题</strong>：<ul>
+<li>物理层：真正建立物理连接传输数据。</li>
+<li>数据链路层：在原始的、有差错的物理传输线路的基础上，采取差错检测、差错控制与流量控制等方法控制数据传输。</li>
+<li>网络层：实现不同网络之间数据传输和转发。</li>
+<li>传输层：网络层只负责主机之间的数据传输，而真正通信的主体是主机内部的应用进程，主机中有很多应用进程，所以传输层负责的是在主机连接的基础上进一步建立端到端(进程到进程)的连接。传输层是面向网络通信的低三层和面向信息处理的高三层之间的一层，起到桥梁作用。</li>
+<li>应用层：为用户提供服务接口或者界面。</li>
+</ul>
+</li>
+<li><strong>分层的好处</strong>：<ul>
+<li>各层之间相互独立，只需要提供与邻层对接的接口，灵活性高。</li>
+<li>便于标准化工作，各层可以独立开发，实现技术不易受其他层影响。</li>
+<li>可以分层调试，易于维护。</li>
+</ul>
+</li>
+</ul>
+<h3 id="OSI七层模型总览"><a href="#OSI七层模型总览" class="headerlink" title="OSI七层模型总览"></a><strong>OSI七层模型总览</strong></h3><p><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/cc314510d74955264013/inter19.png" alt=""></p>
+<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><ul>
+<li><strong>信道复用技术</strong>：频分复用(相同时间占用不同频率带宽)，时分复用(不同时间占用相同频率带宽)，波分复用(光的频分复用)，码分复用(用户用分配给自己的码片序列替代0和1，不同用户的码片理论上应该正交，但实际会有干扰)</li>
+<li><strong>CSMA/CD</strong>：载波监听(Carrier Sense)多点接入(Multiple Access)/碰撞检测(Collision Detect)协议。大致原理是，发送数据前先监听信道是否空闲，若空闲则立即发送数据，边发送边继续监听，若监听到碰撞，则立即停止发送数据，等待一段随机时间，再重新尝试.</li>
+<li><strong>PPP协议</strong>：Point to Point Protocol，用户计算机和 ISP 进行通信时所使用的数据链路层协议。主要基于链路控制协议(LCP)和网络控制协议(NCP)，需要注意，PPP虽然在数据链路层，但也支持网络层协议，相当于一个协议完成两层的功能。工作流程如下：<br><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/5989b4485d09fb372ceb/inter1.png" alt=""></li>
+<li><strong>MAC 地址</strong>：链路层地址，48位，用于唯一标识网络适配器(网卡)。</li>
+<li><strong>以太网</strong>：一种星型拓扑结构局域网，早期使用集线器连接，目前使用交换机连接。</li>
+<li><strong>交换机</strong>：具有自学习能力，学习的是交换表的内容，交换表中存储着 MAC 地址到接口的映射。</li>
+<li><strong>VLAN</strong>：通过交换机配置，分割LAN的广播域，限制ARP Flooding的范围，减轻网络带宽和CPU运算的压力，也提高安全性。路由器也可以分割广播域，但是路由器接口有限，使用也比VLAN麻烦。</li>
+</ul>
+<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><ul>
+<li><strong>IP地址</strong>：有分类编址分为ABCDE五类地址，主要使用ABC，地址格式是前缀+网络号+主机号，如果划分了子网，就是前缀+网络号+子网号+主机号，D是多播地址，E是保留地址。无分类编址CIDR取消了分类以及划分子网的概念，地址格式是网络前缀号+主机号。</li>
+<li><strong>地址解析协议(ARP)</strong>：ARP可以说是链路层协议，也可以说是网络层协议，一方面它属于TCP/IP协议簇，另一方面ARP的回应包被封装在链路层的帧中，而不是IP数据报中。ARP实现由目的主机IP地址得到目的主机MAC地址，如果数据包中没有目的主机的MAC地址，会被目的主机的网卡拦截。每台主机都维护一个ARP缓存表，表项过期或查不到时，就广播ARP请求，目的主机接收到后发送ARP应答数据包。</li>
+<li><strong>网际控制报文协议(ICMP)</strong>：IP协议并不提供可靠传输。如果丢包了，IP协议并不能通知传输层是否丢包以及丢包的原因。ICMP协议能够确认是否丢包以及丢包的原因，当传送IP数据包发生错误时，ICMP协议将会把错误信息封包，然后传送回给主机，为IP协议提供一定的安全性。</li>
+<li><strong>路由器分组转发</strong>：从数据报的首部提取目的主机的 IP 地址 D，得到目的网络地址 N。若 N 是此路由器直接相连的某个网络地址，则直接交付。若路由表中有目的地址为 D 的特定主机路由，则把数据报传送给下一跳路由器。若路由表中有到达网络 N 的路由，则把传送给下一跳路由器。若路由表中有一个默认路由，则传送给默认路由器。否则，报告转发分组出错。</li>
+<li><strong>路由选择协议</strong>：互联网可以划分为许多较小的自治系统AS，一个AS可以使用和别的AS不同的路由选择协议。自治系统内部的路由选择协议(内部网关协议，IGP)有RIP和OSPF，自治系统间的路由选择协议(外部网关协议，EGP)有BGP。<ul>
+<li>路由信息协议(RIP)：基于距离向量的路由选择协议，直接相连的路由器跳数为1，跳数最多为15，超过15表示不可达，相当于限制了网络规模。相邻路由器之间交换路由表，若干次交换后，所有路由器最终都会知道到达本AS中任何一个网络的最短距离和下一跳路由器地址。</li>
+<li>开放式最短路径优先(OSPF)：采用洪泛法，任一路由器都向本AS中所有路由器发送信息，发送的信息就是与相邻路由器的链路状态，通过Dijkstra算法更新最短路径，最终所有路由器都具有全网的拓扑结构图。比RIP效果更好。</li>
+<li>边界网关协议(BGP)：各个AS内部使用不同的路由选择协议，无法准确定义路径的度量，所以BGP只能寻找比较好的路由，而不是最佳路由。每个AS都配置BGP发言人，通过相邻BGP发言人之间建立TCP连接来交换路由信息。</li>
+</ul>
+</li>
+</ul>
+<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><ul>
+<li><strong>UDP</strong>：用户数据报协议，无连接的，无拥塞控制，面向报文(对于应用程序传下来的报文不合并也不拆分，只是添加UDP首部)，支持一对一、一对多、多对一和多对多的交互通信。</li>
+<li><strong>TCP</strong>：传输控制协议，面向连接，提供可靠交付，有流量控制与拥塞控制，面向字节流(把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块)，只支持一对一通信。因为要保证可靠性，所以传输速度比UDP慢。</li>
+<li><strong>三次握手</strong>：<ul>
+<li>客户端向服务端送请求报文，SYN=1，seq=x，客户端进入SYN-SENT阶段</li>
+<li>服务端收到报文后结束LISTEN阶段。向客户端发送 SYN=1，ACK=1，seq=y，ack=x+1，服务器端进入SYN-RCVD阶段</li>
+<li>客户端收到报文后结束SYN-SENT阶段。向服务端发送 ACK=1，seq=x+1，ack=y+1，客户端进入ESTABLISHED阶段。(SYN=1是握手信号，表示需要ACK=1的回应，因为这是最后一次握手，之后不需要回应，所以也就不需要有SYN=1)</li>
+<li>服务端收到报文后进入ESTABLISHED阶段</li>
+</ul>
+</li>
+<li><strong>三次握手原因</strong>：之所以需要三次握手是为了保证可靠连接，可靠连接的含义是客户端和服务端都能确认对方与自己是在同一条连接中，这种确认是用初始序列号实现的，也就是报文中的seq字段。双方通过验证客户端的初始序列号x，可以确保服务端发送给客户端的包是可靠的，通过验证服务端的初始序列号y，可以确保客户端发送给服务端的包是可靠的。第三次握手可以防止已失效的连接请求报文段突然又传送到了服务端所导致的错误，客户端前后发起的两个连接的x可能相同，但服务端可以根据唯一的y来识别当前连接的客户端，也就屏蔽了所有的失效连接。</li>
+<li><strong>四次挥手</strong>：<ul>
+<li>A向B发起断连请求，FIN=1，seq=u，A进入FIN-WAIT-1阶段，不再向B发送数据报文，只发送确认报文</li>
+<li>B确认A的请求，发送ACK=1，seq=v，ack=u+1，B进入CLOSE-WAIT阶段。随后B等待所有需要发送给A的数据发送完毕。</li>
+<li>A收到后进入FIN-WAIT-2阶段</li>
+<li>B确认所有数据发送完毕后，再次向A发送FIN=1，ACK=1，seq=w，ack=u+1，B进入LAST-ACK阶段，只能接受A的确认报文</li>
+<li>A收到后向B发送ACK=1，seq=u+1，ack=w+1，A进入进入TIME-WAIT阶段，等待2MSL(Maximum Segment Lifetime，报文最长存活时间)后进入CLOSED阶段，断开A到B方向的连接</li>
+<li>B收到后进入CLOSED阶段，断开B到A方向的连接</li>
+</ul>
+</li>
+<li><strong>四次挥手原因</strong>：前两次握手是为了让双方都知道并同意断连，同时给B留出时间把数据发送完，在此基础上才能真正执行断连。后两次握手是为了保证双方是在知道对方马上就会断连的基础上断开自己的连接，B收到A的确认后，知道A已经收到所有数据了，而且稍后会自行断连，所以B也可以放心断连，A等待2MSL也是为了确认B收到自己的确认报文，如果B没有收到，会在1MSL再次收到B的FIN=1的报文，等了2MSL还没消息，说明B已经知道并默许A断连了，那么A就可以放心断连。2MSL实际上是性能和可靠性的取舍，等太久会影响性能，所以如果延迟超过2MSL就只能重连了。</li>
+</ul>
+<h3 id="TCP如何保证可靠传输？"><a href="#TCP如何保证可靠传输？" class="headerlink" title="TCP如何保证可靠传输？"></a>TCP如何保证可靠传输？</h3><ul>
+<li><strong>数据分割</strong>：应用数据被分割成 TCP 认为最适合发送的数据块大小。</li>
+<li><strong>数据包编号</strong>：给发送的每一个包进行编号，接收方对数据包进行排序，把有序数据传送给应用层。</li>
+<li><strong>校验和</strong>：在报头的校验和字段记录了首部+数据+伪首部的校验和(伪首部用于提高检错能力)。如果接收端发现某个段的检验和有差错，就丢弃该报文段，不发送该段的确认。</li>
+<li><strong>接收端去重</strong>：接收端会丢弃重复的数据。</li>
+<li><strong>流量控制</strong>：接收方发送的确认报文中的窗口字段可以用来控制发送方窗口大小，从而控制发送方发送速率，保证接收方来得及接收。</li>
+<li><strong>拥塞控制</strong>：发送方维护一个叫做拥塞窗口(cwnd)的状态变量，限制发送方能够发送的报文段数量。以下假设接收方缓存足够大，不会发生流量控制。<ul>
+<li>慢开始：开始cwnd=1，发送方收到确认后cwnd=cwnd*2</li>
+<li>拥塞避免：设置一个慢开始门限ssthresh，当cwnd&gt;=ssthresh 时，每个轮次cwnd=cwnd+1。不论是慢开始还是拥塞避免，只要网络出现拥塞(超时)，就把ssthresh的值置为出现拥塞时的cwnd的一半</li>
+<li>快重传：接收方收到失序报文后发送重复确认，发送方如果收到三个重复确认，说明下一个报文段丢失，此时不用等待超时重传计时器，立即重传下一个报文段。</li>
+<li>快恢复：发送方如果收到三个重复确认，说明只是丢失个别报文段，而不是网络拥塞。不用重新慢开始(cwnd=1)，直接令ssthresh=cwnd/2，cwnd=ssthresh，进入拥塞避免算法</li>
+</ul>
+</li>
+<li><strong>ARQ协议</strong>：自动重传请求(Automatic Repeat-reQuest)协议，基于确认和超时重传机制，每发完一个分组就停止发送，等待对方确认，收到确认后再发下一个分组，一段时间之内没有收到确认则重新发送。ARQ是数据链路层的错误纠正协议之一，主要分为两种：<ul>
+<li>停止等待 ARQ：发送方每发送完一个分组就设置超时计时器，等待接收方确认。实现简单，但只能确认一个发一个，信道利用率低。</li>
+<li>连续 ARQ(TCP采用的)：发送方维护一个发送窗口，发送窗口内的分组可以连续发送而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。信道利用率高，但发送方无法明确知道接收方已经收到了哪些分组，比如发送方发送了5个分组，只收到第二个分组的确认，能够确定第三个分组发送失败，但无法确认后两个是否被接收，所以就要Go-Back-N，把后三个全部重传。</li>
+</ul>
+</li>
+<li><strong>超时重传</strong>：发送方如果不能及时收到一个确认，将重发报文段。</li>
+<li>注意，在描述TCP协议时，往往顺带着描述了整个TCP/IP协议栈的流程，所以会把帧、分组、包(分组就是包，英文都是packet)、报文段的概念混用。</li>
+</ul>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><ul>
+<li><strong>方法</strong>：GET，HEAD(获取报文首部)，POST，PUT(上传文件，不安全)，PATCH(对资源进行部分修改)，DELETE，OPTIONS(查询支持的方法)，CONNECT(与代理服务器建立隧道，让代理服务器替用户访问其他服务器)，TRACE(追踪路径)</li>
+<li><strong>cookie</strong>：HTTP 协议是无状态的，主要是为了让 HTTP 协议尽可能简单，使得它能够处理大量事务。cookie用于保存状态信息，随着现代浏览器开始支持其他存储方式(Web storage，IndexedDB)，Cookie 渐渐被淘汰。</li>
+<li><strong>cookie vs session</strong><ul>
+<li>cookie只能存储ASCII码字符串。session 则可以存储任何类型的数据。</li>
+<li>cookie存储在客户端，有泄露风险。session则存储在服务器，但增加了服务器的负担。</li>
+</ul>
+</li>
+<li><strong>HTTPS</strong>： HTTP先和SSL(Secure Sockets Layer)通信，再由SSL和TCP通信，也就是说HTTPS使用了隧道进行通信。<ul>
+<li>加密：对称密钥加密运算速度快但不安全，非对称密钥加密安全但运算速度慢，所以HTTPS采用混合的加密机制，使用非对称加密传输对称加密所需要的Secret Key，再用Secret Key对通信进行加密。兼顾安全性与效率。</li>
+<li>认证：数字证书认证机构(CA，Certificate Authority)是客户端与服务器共同信赖的第三方机构，负责对公钥做数字签名，通信方拿到公钥后需要先验证数字签名，才能保证通信的可靠性。</li>
+<li>完整性保护：SSL通过对报文计算MD5摘要来进行完整性保护，但这个MD5值需要上述加密与认证机制来保证可靠性。</li>
+</ul>
+</li>
+<li><strong>GET和POST区别</strong>：<ul>
+<li>GET 用于获取资源，是幂等的(对访问的数据没有副作用)，所以可以对获取的资源做缓存。POST用于传输实体主体，是不幂等的，所以获取的资源不能缓存(没有意义)。</li>
+<li>GET的额外参数存储在URL，支持的编码集是ASCII码的子集。POST的参数存储在实体主体中，支持utf8甚至二进制文件。但URL也并没有受到多大限制，因为完全可以把中文字符转换成utf8的ASCII表示，也就是URL里常见的一坨%和16进制表示，只需要在发送请求前对URL中的非ASCII字符进行转码。</li>
+<li>HTTP协议本身对URL长度没有任何限制，都是浏览器、服务器或编程语言额外加的限制，一般是为了减轻解析URL的负担。</li>
+<li>GET和POST都不保证安全性，只是GET的参数相对更容易获取罢了，要保证安全还得是HTTPS。</li>
+<li>GET和POST本质上没有区别，之所以功能和使用上有差别是为了迎合REST规范，浏览器可能会有一些限制(比如url输入框只能是GET方法)，但HTTP协议本身对二者没有任何限制。完全可以用GET传输实体主体而用POST获取资源，但由于浏览器可能会根据规范对GET和POST有不同处理，自定义二者的功能可能会有安全隐患。</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP-长连接-amp-短连接"><a href="#HTTP-长连接-amp-短连接" class="headerlink" title="HTTP 长连接 &amp; 短连接"></a>HTTP 长连接 &amp; 短连接</h3><ul>
+<li>HTTP协议的长连接和短连接，<strong>实质上是TCP协议的长连接和短连接</strong>。</li>
+<li><strong>在HTTP/1.0中，默认使用短连接</strong>，客户端和服务器每进行一次HTTP操作，就建立一次TCP连接，任务结束就中断连接。</li>
+<li><strong>从HTTP/1.1起，默认使用长连接</strong>，用以保持连接特性，实现长连接需要客户端和服务端都支持长连接。使用长连接时，会在响应头加入 <code>Connection:keep-alive</code> 。当一个HTTP操作完成后，客户端和服务器之间用于传输HTTP数据的TCP连接不会关闭，之后的HTTP操作会重用这条连接。Keep-Alive不会永久保持连接，可以WebServer中设置保持时间。</li>
+<li>在长连接中，如果客户端已经消失而连接未断开，就会使服务器上保留一个半开放的连接，服务器会无意义地等待来自客户端的数据。<strong>TCP的保活功能</strong>试图在服务端检测这种半开放的连接，当一个TCP连接在两小时内都没有任何动作时，服务器就向客户发送10个探测报文，每个间隔75秒，若最终没有收到客户端的回应，就关闭此连接。</li>
+</ul>
+<h3 id="HTTP2-0的改进"><a href="#HTTP2-0的改进" class="headerlink" title="HTTP2.0的改进"></a>HTTP2.0的改进</h3><ul>
+<li><strong>二进制分帧(Binary Framing)</strong>：在应用层和传输层之间增加了二进制分帧层，将所有传输的信息分割为更小的消息和帧,并对它们采用二进制格式的编码。HTTP/2 采用二进制格式传输数据，而非 HTTP 1.x 的文本格式，二进制协议解析起来更高效。</li>
+<li><strong>多路复用(Request and Response Multiplexing)</strong>：HTTP 1.x 中，如果想并发多个请求，必须使用多个 TCP 链接，且浏览器为了控制资源，还会对单个域名有TCP链接数的限制。有了二进制分帧之后，因为多个帧之间可以乱序发送，根据帧首部的流标识可以重新组装，所以HTTP/2可以只通过一个 TCP连接并发完成所有请求，更有效地使用了TCP连接，TCP连接的减少也使得网络拥堵的情况有所改善，提高了传输性能，实现了低延迟和高吞吐量。</li>
+<li><strong>首部压缩(Header Compression)</strong>：HTTP/1.x每次请求，都会携带大量冗余头信息，用于描述这次通信的的资源、浏览器属性、cookie等。HTTP/2对消息头采用HPACK(专为HTTP/2头部设计的压缩格式)格式进行传输。</li>
+<li><strong>流优先级(Stream priority)</strong>：在HTTP/2中，每个请求都可以带一个31bit的优先值，高优先级的流都应该优先发送.客户端和服务器可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。</li>
+<li><strong>服务器推送(Server push)</strong>：服务器可以对一个客户端请求发送多个响应，而无需客户端明确地请求。额外推送的资源可以被浏览器缓存，也可以达到多页面共享，同时资源推送遵守同源策略，服务器不会随便推送第三方资源给客户端。</li>
+</ul>
+<h3 id="Unix五种-I-O-模型"><a href="#Unix五种-I-O-模型" class="headerlink" title="Unix五种 I/O 模型"></a>Unix五种 I/O 模型</h3><ul>
+<li>对于socket的IO操作，通常是先等待数据从网络中到达，把数据复制到内核缓冲区，然后把数据从内核缓冲区复制到应用进程缓冲区。</li>
+<li><strong>阻塞式 I/O</strong>：应用程序调用一个IO函数，导致应用程序阻塞，如果数据已经准备好，就从内核拷贝到用户空间，否则一直等待下去。在linux中，默认所有的socket都是blocking。</li>
+<li><strong>非阻塞式 I/O</strong>：当所请求的IO操作无法完成时，不把进程阻塞，而是返回一个错误。应用程序继续执行，IO函数将不断测试数据是否已经准备好直到准备好为止。在这个不断测试的过程中，会大量的占用CPU的时间，所以这种模型的CPU利用率比较低。</li>
+<li><strong>I/O 多路复用</strong>：单个进程可以同时处理多个网络连接IO，select、poll、epoll函数会不断轮询所负责的所有socket。本质上就是阻塞式 I/O，只不过可以同时阻塞多个IO操作，也就是一个进程能同时等待多个文件描述符，只要任一socket变成可读就返回处理，因为也叫作事件驱动 I/O。优势是支持高并发。</li>
+<li><strong>信号驱动 I/O</strong>：应用程序通过sigaction系统调用实现信号处理，等待数据报到达期间进程不被阻塞，内核会在描述符就绪时发送SIGIO信号，应用进程收到信号后调用 recvfrom 将数据从内核复制到应用进程中。比非阻塞式 I/O的轮询法效率高。</li>
+<li><strong>异步 I/O</strong>：应用进程告知内核执行某个IO操作后立即返回，不会被阻塞，内核会在所有操作完成之后向应用进程发送信号。信号驱动 I/O是通知应用进程可以开始 I/O，而异步 I/O是通知应用进程 I/O 完成。</li>
+</ul>
+<h3 id="浏览器访问网页的详细过程"><a href="#浏览器访问网页的详细过程" class="headerlink" title="浏览器访问网页的详细过程"></a>浏览器访问网页的详细过程</h3><ul>
+<li><strong>DHCP 配置主机信息</strong>：假设浏览器主机最开始没有 IP ，就需要先使用DHCP来获取。主机生成一个DHCP请求报文并放入一个UDP报文段中，该UDP报文段被放入一个具有广播地址的IP数据报中，该IP数据报被放置在MAC帧中并广播到与交换机连接的所有设备。连接在交换机的DHCP服务器收到广播帧之后，解析出DHCP请求并生成DHCP ACK报文，该报文又经过UDP报文段、IP数据报、MAC帧的层层封装，被发送回浏览器主机，主机解析出DHCP ACK报文来配置自己的IP地址、子网掩码和DNS服务器的IP地址，并在其IP转发表中安装默认网关。</li>
+<li><strong>ARP 解析 MAC 地址</strong>：DHCP 过程只获取了网关路由器的 IP 地址，而获取网关路由器的 MAC 地址需要使用 ARP 协议。于是主机生成一个目的地址为网关路由器 IP 地址的 ARP 查询报文，该ARP报文被放入一个具有广播地址的以太网帧中，交换机将该帧转发给所有的连接设备。网关路由器接收到该帧后，解析出ARP 报文并发送一个ARP 回答报文，将它的 MAC 地址告知主机。</li>
+<li><strong>DNS 解析域名</strong>：主机需要知道访问的域名对应的IP地址，于是生成一个 DNS 查询报文，该报文被放入目的地址为 DNS 服务器 IP 地址的 IP 数据报中，该数据报又被放入一个以太网帧中，该帧被发送到网关路由器。网关路由器收到后解析出IP数据报，由于路由表中已经配置了网关路由器到达 DNS 服务器的路由表项，于是网关路由器根据路由表将该 IP 数据报转发给DNS 服务器。DNS 服务器解析出DNS 查询报文，找到 DNS 记录之后发送 DNS 回答报文，该报文经过UDP报文段、IP数据报的封装被发送到主机，告知域名对应的IP地址。</li>
+<li><strong>HTTP 请求页面</strong>：根据目标服务器的 IP 地址，主机与其通过三次握手建立TCP连接。之后浏览器发送 HTTP报文，服务器从 TCP套接字读取 HTTP报文，发送一个 HTTP 响应报文并将请求的资源内容放入报文主体中。浏览器收到 HTTP 响应报文后，抽取出 Web 页面内容，进行渲染并显示。</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="场景设计——秒杀"><a href="#场景设计——秒杀" class="headerlink" title="场景设计——秒杀"></a>场景设计——秒杀</h3><ul>
+<li>主要难点：<strong>瞬时高并发</strong></li>
+<li>把访问频率较高但内容变动较小的页面做<strong>静态化</strong>，减轻服务器负担</li>
+<li>前后端分离，把静态页面和静态资源迁移到<strong>CDN缓存</strong>，减轻服务器负担</li>
+<li>把活动页面部署在公有云，可以按需<strong>动态扩容</strong>、增加带宽</li>
+<li><strong>服务降级</strong>，限制或停用其他不重要的功能，丢车保帅，给秒杀系统让资源</li>
+<li><strong>交易限流</strong>，在前端限制点击频率，或在后端限制请求量，丢弃超出限量的请求</li>
+<li><strong>熔断</strong>，秒杀场景需要快速返回结果，当秒杀的调用链有一个服务不可用、超时或等待时，不应该让用户等待，应该直接返回静态失败报文</li>
+<li><strong>服务单一职责</strong>，独立部署秒杀服务，即使秒杀崩了也不影响其他服务</li>
+<li><strong>链接加密</strong>，后端解密，防止前端开发人员提前泄露秒杀链接</li>
+<li><strong>分流</strong>，部署集群，通过Nginx负载均衡共同处理客户端请求，分散压力</li>
+<li>单机的Redis一般QPS不会超过10万，可以部署<strong>Redis集群</strong>，主从同步、读写分离，实现高并发</li>
+<li><strong>恶意请求拦截</strong>，Nginx可以修改配置来限制ip在同一时间段的访问次数</li>
+<li><strong>库存预热</strong>，提前把商品的库存加载到Redis中，减轻数据库压力，等秒杀结束了再异步地去修改数据库</li>
+<li><strong>流量削峰</strong>，如果扩容成本很高，就可以引入消息队列MQ来作为缓冲区，原来的同步调用变为异步执行，请求被封装成消息缓存在消息队列，从而最小化请求峰值对服务可用性和响应性的影响</li>
+<li>如果是在下单之后减库存，会出现<strong>超卖</strong>问题，可以使用乐观锁，或利用Redis单线程预减库存</li>
+</ul>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shivakasu.cn/2017/01/24/interview0/">https://shivakasu.cn/2017/01/24/interview0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shivakasu.cn" target="_blank">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a></div><div class="post_share"><div class="social-share" data-image="http://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信" onclick="window.open('https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png')"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝" onclick="window.open('https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg')"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/01/25/interview1/"><img class="prev-cover" data-src="https://file.shivakasu.cn/47ac8cadfbd9da344fc9/java.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">无聊的知识点之 Java</div></div></a></div><div class="next-post pull-right"><a href="/2016/10/27/bugfix3/"><img class="next-cover" data-src="http://file.shivakasu.cn/625f259cab2ac7f8e1c0/bugfix.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Anaconda中关于Qt的bug</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/01/10/arg0/" title="《程序员代码面试指南》"><img class="relatedPosts_cover" data-src="http://file.shivakasu.cn/5f37cb297aa622ca620e/interview0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-10</div><div class="relatedPosts_title">《程序员代码面试指南》</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/27/interview3/" title="无聊的知识点之 Python"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/2e594da7dae7aed97c58/python.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-27</div><div class="relatedPosts_title">无聊的知识点之 Python</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/26/interview4/" title="无聊的知识点之数据库"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/7374683f987a24a05180/sql.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-26</div><div class="relatedPosts_title">无聊的知识点之数据库</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/28/interview5/" title="无聊的知识点之大数据"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/f9090341835f7511eae5/bigdata.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-28</div><div class="relatedPosts_title">无聊的知识点之大数据</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/26/interview2/" title="无聊的知识点之设计模式"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/43003cda4506046a2bdd/design.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-26</div><div class="relatedPosts_title">无聊的知识点之设计模式</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/25/interview1/" title="无聊的知识点之 Java"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/47ac8cadfbd9da344fc9/java.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-25</div><div class="relatedPosts_title">无聊的知识点之 Java</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'qIfwEiuSjlc5vyminB1rx2qX-gzGzoHsz',
+  appKey: 'erfVXuW3AybzbWGqxSGxnBRp',
+  placeholder: '来都来了，说点儿什么吧~',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'zh-CN',
+  recordIP: true,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By w.k.x.</div><div class="framework-info"><span>DrivenBy </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>京ICP备19001969号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

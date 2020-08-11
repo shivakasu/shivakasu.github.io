@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>无聊的知识点之数据库 | SHIVAKASU</title><meta name="description" content="概念事务 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 ACID ： 原子性(Atomicity)：事务的所有操作要么全部提交成功，要么全部失败回滚。 一致性(Consistency)：数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取结果都是相同的。 隔离性(Isolation)：一个事务所"><meta name="keywords" content="面试,数据库"><meta name="author" content="w.k.x.,wkx1996@foxmail.com"><meta name="copyright" content="w.k.x."><meta name="format-detection" content="telephone=no"><link rel="shortcut icon" href="https://file.shivakasu.cn/eb8581b76ec032ab0db8/favicon.ico"><link rel="canonical" href="https://shivakasu.cn/2017/01/26/interview4/"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="无聊的知识点之数据库"><meta property="og:url" content="https://shivakasu.cn/2017/01/26/interview4/"><meta property="og:site_name" content="SHIVAKASU"><meta property="og:description" content="概念事务 事务指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 ACID ： 原子性(Atomicity)：事务的所有操作要么全部提交成功，要么全部失败回滚。 一致性(Consistency)：数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取结果都是相同的。 隔离性(Isolation)：一个事务所"><meta property="og:image" content="https://file.shivakasu.cn/7374683f987a24a05180/sql.jpg"><meta property="article:published_time" content="2017-01-25T16:43:20.000Z"><meta property="article:modified_time" content="2017-01-26T15:34:20.000Z"><meta name="twitter:card" content="summary"><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#fff')
+  }
+}
+
+var getCookies = function (name) {
+  const value = `; ${document.cookie}`
+  const parts = value.split(`; ${name}=`)
+  if (parts.length === 2) return parts.pop().split(';').shift()
+}
+
+var autoChangeMode = 'false'
+var t = getCookies('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      console.log('You specified no preference for a color scheme or your browser does not support it. I Schedule dark mode during night time.')
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (Cookies.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="prev" title="无聊的知识点之 Python" href="https://shivakasu.cn/2017/01/27/interview3/"><link rel="next" title="无聊的知识点之设计模式" href="https://shivakasu.cn/2017/01/26/interview2/"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  bookmark: {
+    message_prev: '按',
+    message_next: '键将本页加入书签'
+  },
+  runtime_unit: '天',
+  runtime: true,
+  copyright: {"languages":{"author":"作者: w.k.x.","link":"链接: ","source":"来源: SHIVAKASU","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  highlightCopy: true,
+  highlightLang: true,
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isanchor: true    
+}</script><script>var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true
+  }</script><noscript><style>
+#nav {
+  opacity: 1
+}
+.justified-gallery img{
+  opacity: 1
+}
+</style></noscript><meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="SHIVAKASU" type="application/atom+xml">
+</head><body><canvas class="fireworks"></canvas><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://file.shivakasu.cn/cb7049104af4685e7289/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">46</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">19</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">6</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div id="sidebar"><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并发一致性问题"><span class="toc-text">并发一致性问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#封锁"><span class="toc-text">封锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#隔离级别"><span class="toc-text">隔离级别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多版本并发控制"><span class="toc-text">多版本并发控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系数据库设计范式"><span class="toc-text">关系数据库设计范式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL语法简要"><span class="toc-text">SQL语法简要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建数据库"><span class="toc-text">创建数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建表"><span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改表"><span class="toc-text">修改表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#插入"><span class="toc-text">插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更新"><span class="toc-text">更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除"><span class="toc-text">删除</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查询"><span class="toc-text">查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#排序"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#过滤"><span class="toc-text">过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通配符"><span class="toc-text">通配符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算字段"><span class="toc-text">计算字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置函数"><span class="toc-text">内置函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分组"><span class="toc-text">分组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#子查询"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连接"><span class="toc-text">连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组合查询"><span class="toc-text">组合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#存储过程"><span class="toc-text">存储过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#游标"><span class="toc-text">游标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发器"><span class="toc-text">触发器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事务管理"><span class="toc-text">事务管理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符集"><span class="toc-text">字符集</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#权限管理"><span class="toc-text">权限管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySQL"><span class="toc-text">MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MyISAM-amp-InnoDB"><span class="toc-text">MyISAM &amp; InnoDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表级锁-amp-行级锁"><span class="toc-text">表级锁 &amp; 行级锁</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大表优化"><span class="toc-text">大表优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库连接池"><span class="toc-text">数据库连接池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-基础架构"><span class="toc-text">MySQL 基础架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL语句的执行过程"><span class="toc-text">SQL语句的执行过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一条SQL语句执行得很慢的原因有哪些？"><span class="toc-text">一条SQL语句执行得很慢的原因有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis"><span class="toc-text">Redis</span></a></li></ol></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://file.shivakasu.cn/7374683f987a24a05180/sql.jpg)"><nav id="nav"><span class="pull-left" id="blog_name"><a class="blog_title" id="site-name" href="/">SHIVAKASU</a></span><span class="pull-right menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down menus-expand"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li><li><a class="site-page" href="/books/"><i class="fa-fw fa fa-book"></i><span> Book</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="toggle-menu close"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">无聊的知识点之数据库</div></div><div id="post-meta"><div class="meta-firstline"><time class="post-meta__date"><span class="post-meta__date-created" title="发表于 2017-01-26 00:43:20"><i class="far fa-calendar-alt fa-fw"></i> 发表于 2017-01-26</span><span class="post-meta__separator">|</span><span class="post-meta__date-updated" title="更新于 2017-01-26 23:34:20"><i class="fas fa-history fa-fw"></i> 更新于 2017-01-26</span></time><span class="post-meta__categories"><span class="post-meta__separator">|</span><i class="fas fa-inbox fa-fw post-meta__icon"></i><a class="post-meta__categories" href="/categories/%E6%97%A5%E5%B8%B8%E4%B8%93%E4%B8%9A%E5%AD%A6%E4%B9%A0/">日常专业学习</a></span></div><div class="meta-secondline"> <span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta__icon"></i><span>字数总计:</span><span class="word-count">9.1k</span><span class="post-meta__separator">|</span><i class="far fa-clock fa-fw post-meta__icon"></i><span>阅读时长: 29 分钟</span></span></div><div class="meta-thirdline"><span class="post-meta-pv-cv"><span class="post-meta__separator">|</span><i class="far fa-eye fa-fw post-meta__icon"></i><span>阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-commentcount"><span class="post-meta__separator">|</span><i class="far fa-comments fa-fw post-meta__icon"></i><span>评论数:</span><a href="/2017/01/26/interview4/#post-comment" itemprop="discussionUrl"><span class="valine-comment-count comment-count" data-xid="/2017/01/26/interview4/" itemprop="commentCount"></span></a></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><h3 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h3><ul>
+<li><strong>事务</strong>指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。</li>
+<li><strong>ACID</strong> ：<ul>
+<li><strong>原子性(Atomicity)</strong>：事务的所有操作要么全部提交成功，要么全部失败回滚。</li>
+<li><strong>一致性(Consistency)</strong>：数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取结果都是相同的。</li>
+<li><strong>隔离性(Isolation)</strong>：一个事务所做的修改在最终提交以前，对其它事务是不可见的。</li>
+<li><strong>持久性(Durability)</strong>：一旦事务提交，则其所做的修改将会永远保存到数据库中。</li>
+</ul>
+</li>
+<li><strong>ACID 的意义</strong>：<ul>
+<li>一致性保证了事务执行结果正确。</li>
+<li>持久性保证了系统崩溃后数据不会丢失。</li>
+<li>事务串行执行时，只要保证了原子性，就自然保证了一致性。</li>
+<li>事务并行执行时，只有同时保证原子性与隔离性，才能保证一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="并发一致性问题"><a href="#并发一致性问题" class="headerlink" title="并发一致性问题"></a>并发一致性问题</h3><ul>
+<li>先假设以下所说的事务不满足ACID的隔离性原则，因为一切并发问题都是由于没有完全满足隔离性原则。</li>
+<li><strong>丢失修改</strong>：事务T1和T2对同一数据进行修改，T1和T2都读取了数据后，T1提交修改，由于T2是在T1提交前读的数据，所以没有考虑T1的修改结果，直接把自己的修改结果提交，结果就是T1做的修改被回滚了，实际只有T2进行了修改。</li>
+<li><strong>读脏数据</strong>：事务T1修改了某数据，事务T2随后读取了该数据，随后T1回滚了修改操作。T2读到的就是脏数据，因为T2记录的数据值和数据库中的不一致。</li>
+<li><strong>不可重复读</strong>：事务T2中对某数据读取了两次，第一次读取后，事务T1提交了对该数据的修改，导致T2第二次读到的数据与第一次不同，违背了ACID的一致性原则，使得T2内部可能发生混乱。在这种场景下，不可重复读导致T2内部混乱，可重复读则导致T2读的不是最新数据，都会有问题，所以唯一的解决方法是禁止T1在T2的两次读之间修改数据。</li>
+<li><strong>幻影读</strong>：事务T1第一次读取某个范围的数据，随后事务T2在这个范围内插入或删除了一些数据，随后T1第二次读取此范围的数据，读取的结果和第一次不同。</li>
+<li>不可重复读和幻影读本质上是一个问题，都是在一个事务提交的修改导致另一事务两次读的结果不同。区别在于，不可重复读针对的是UPDATE操作，幻影读针对的是INSERT和DELETE操作。</li>
+<li>解决并发不一致问题的方法是通过封锁做并发控制。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/39f40fdbda311c9a108a/db1.png" alt=""></th>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/f7ed30f20186d158c902/db2.png" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/cc683878094d64618f7b/db3.png" alt=""></td>
+<td style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/1db4764384220e640b1b/db4.png" alt=""></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="封锁"><a href="#封锁" class="headerlink" title="封锁"></a>封锁</h3><ul>
+<li><strong>封锁粒度</strong>：理论上应该只锁定需要修改的数据，这样能减少锁竞争，提高并发程度。但锁粒度太小会导致频繁的加锁解锁，增加系统开销。所以封锁粒度的选择是<strong>在并发度(速度)和资源开销间做权衡</strong>。</li>
+<li><strong>封锁类型</strong>：<ul>
+<li><strong>读写锁</strong>：<ul>
+<li>包含一个读锁(互斥锁，Exclusive，简称X锁)和一个写锁(共享锁，Shared，简称S锁)。</li>
+<li>如果事务T对数据A加了X锁，可以执行读写，加锁期间其他事务不能再对A加任何锁。</li>
+<li>如果事务T对数据A加了S锁，只能执行读操作，加锁期间其他事务只能对A加S锁，不能加X锁。</li>
+</ul>
+</li>
+<li><strong>意向锁</strong>：<ul>
+<li>在读写锁的基础上添加了意向锁，读写锁X/S用于实际封锁行或表，意向锁IX/IS仅用于表示封锁整张数据表的意向。</li>
+<li>一个事务在获得某行的 S 锁之前，必须先获得表的 IS 锁。</li>
+<li>一个事务在获得某行的 X 锁之前，必须先获得表的 IX 锁。</li>
+<li>IX/IS锁之间相互兼容，因为并不是实际加锁，所以可以随便申请。只有与X/S锁关联时才需要考虑兼容性。</li>
+<li><strong>意向锁的意义在于优化表级的X/S锁</strong>。由于对行的修改就相当于对表的修改，所以对表加X锁就需要保证所有行都没有被加X/S锁，对表加S锁就需要保证所有行都没有被加X锁，而这只能靠遍历所有行来确认，非常浪费时间。意向锁相当于对表做了额外的标记，只需要检查表的IX/IS锁就能知道是否有某行正在被读写(表级锁只关心有没有，不关心具体是哪些行)，而不需要遍历所有行。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>封锁协议</strong>：<ul>
+<li><strong>一级封锁协议</strong>：事务 T 要修改数据 A 时必须加 X 锁，直到 T 结束才释放锁。可以避免丢失修改问题。</li>
+<li><strong>二级封锁协议</strong>：在一级的基础上，要求读取数据 A 时必须加 S 锁，读取完马上释放 S 锁。可以避免读脏数据问题，因为加S锁的数据不能被回滚。</li>
+<li><strong>三级封锁协议</strong>：在二级的基础上，要求读取数据 A 时必须加 S 锁，直到事务结束了才能释放 S 锁。可以避免不可重复读和幻影读问题。</li>
+<li><strong>两段锁协议</strong>：把事务分成两个阶段，第一阶段只允许获得锁，第二阶段只允许释放锁。事务遵循两段锁协议是保证可串行化调度的充分条件，可串行化调度是指能通过并发控制使得并发执行的事务结果与某个串行执行的事务结果相同，消除了并发的不确定性，所以能避免一切并发一致性问题。</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/f6cc3ce24d23ac5ea748/db5.png" alt=""></th>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/eb9259891d1752da4db1/db6.png" alt=""></th>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/21ea50d0b61f3892283d/db7.png" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="隔离级别"><a href="#隔离级别" class="headerlink" title="隔离级别"></a>隔离级别</h3><ul>
+<li>封锁操作需要用户自己实现，而数据库一般内置了封锁功能，并对用户提供了对应的事务隔离级别。</li>
+<li><strong>未提交读(READ UNCOMMITTED)</strong>：事务所做的修改即使没有提交，对其它事务也是可见的。不能避免任何问题，同时也违背了ACID里的隔离性原则。</li>
+<li><strong>提交读(READ COMMITTED)</strong>：事务所做的修改在提交之前，对其它事务是不可见的。仅能避免读脏数据。</li>
+<li><strong>可重复读(REPEATABLE READ)</strong>：保证同一事务中对同一数据的多次读取结果相同。仅能避免丢失修改、读脏数据和不可重复读。</li>
+<li><strong>串行化(SERIALIZABLE)</strong>：强制事务串行执行。完全满足了隔离性原则，可以避免一切并发一致性问题。</li>
+</ul>
+<h3 id="多版本并发控制"><a href="#多版本并发控制" class="headerlink" title="多版本并发控制"></a>多版本并发控制</h3><ul>
+<li>多版本并发控制(Multi-Version Concurrency Control, MVCC)是 MySQL 的 InnoDB 实现隔离级别的一种具体方式。核心思想是保存多个版本的快照，写操作更新最新版本的快照，而读操作去读旧版本快照，读和写没有了互斥关系，类似于CopyOnWrite。因为能保证读到的是提交过的修改，每次写操作的结果也会更新为最新版本，所以以空间为代价实现了并行化的高度隔离。</li>
+<li>快照存储在 Undo 日志中，该日志通过回滚指针 ROLL_PTR 把一个数据行的所有快照连接起来。事务的修改操作(DELETE、INSERT、UPDATE)会为数据行新增一个版本快照。</li>
+<li>MVCC 维护了一个 ReadView 结构，主要包含了当前系统未提交的事务(活跃事务)ID列表 trxids，以及该列表的最小值 up_limit_id 和最大值 low_limit_id，由于未提交的事务不一定是连续的，所以位于up_limit_id 和 low_limit_id之间的事务不一定就是未提交的。</li>
+<li>开启一个事务后，读取数据时会生成该时刻对应的ReadView。在当前事务进行 SELECT 操作时，使用ROLL_PTR指针寻找可用快照，根据数据行快照的 trxid 与 up_limit_id 和 low_limit_id 之间的关系来判断该版本快照是否可以使用：<ul>
+<li>trxid &lt; up_limit_id，表示该快照对应的事务在当前事务开启之前就已经提交了，因此可以使用。</li>
+<li>trxid &gt; low_limit_id，表示该快照对应的事务在当前事务开启之后才提交的，因为事务要保持一致性，所以必须对其他事务在当前事务执行期间所做的修改视而不见，因此该快照不可使用。</li>
+<li>up_limit_id &lt;= trxid &lt;= low_limit_id，如果 trxid 在 trxids 列表中，表示该数据行快照对应的事务还未提交，则该快照不可使用。否则表示已经提交，可以使用。</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/465991bf7e25a2300f63/db8.jpg" alt=""></th>
+<th style="text-align:center"><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/f0909f3684c8c803c472/db9.jpg" alt=""></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>在提交读隔离级别下，每次读取数据前都生成一个ReadView。在可重复读隔离级别下，只在第一次读取数据时生成一个ReadView。</li>
+<li>对于当前事务使用的快照，因为其对应的事务都是提交了的，所以能避免读脏数据，又因为其对应的事务一定是在当前事务开启前提交的，所以能避免不可重复读。</li>
+<li>MVCC不能完全避免幻影读：<ul>
+<li>在提到不可重复读时，一般认为是SELECT读操作，读的是快照，所以能够保持一致性。</li>
+<li>在提到幻影读时，一般涉及两种读操作。一种是显式的SELECT，可以保持一致性。另一种是DELETE、INSERT、UPDATE操作，这些命令在修改数据前都需要先获取数据，相当于隐式的读，而这种读操作是要获取最新的数据，所以不会从快照中读，因此无法保证一致性。</li>
+<li>InnoDB 采用 MVCC + Next-Key Locks 的方式来完全避免幻影读，Next-Key Locks 结合了 Record Locks 和 Gap Locks，不仅锁定了具体的行索引，也锁定索引之间的间隙，相当于锁定了一个闭区间，锁定期间不允许其他事务在这个区间执行DELETE、INSERT、UPDATE操作。</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系数据库设计范式"><a href="#关系数据库设计范式" class="headerlink" title="关系数据库设计范式"></a>关系数据库设计范式</h3><ul>
+<li>假设A是键码，B是属性，对于 A-&gt;B，如果能找到 A 的真子集 A’，使得 A’-&gt; B，那么 A-&gt;B 就是<strong>部分函数依赖</strong>，否则就是<strong>完全函数依赖</strong>。</li>
+<li><strong>第一范式(1NF)</strong>：属性不可分。一条数据的每个属性都只能有一个值。</li>
+<li><strong>第二范式(2NF)</strong>：在第一范式的基础上，要求非主属性完全函数依赖于键码。比如包含姓、名、年龄三个字段的表，以姓+名为键码能够索引到唯一的年龄，而对于该键码的真子集，都不能索引到唯一的年龄(一个姓对应好几个年龄)，所以年龄完全依赖于姓+名。</li>
+<li><strong>第三范式(3NF)</strong>：在第二范式的基础上，要求非主属性不传递函数依赖于键码。比如包含姓、名、身份证号、年龄四个字段的表，以姓+名为键码能够索引到唯一的年龄和身份证号，而且满足第二范式，但由于身份证号也能索引到唯一的年龄，所以不满足第三范式。第三范式意味着所有非键属性必须相互独立。</li>
+</ul>
+<h2 id="SQL语法简要"><a href="#SQL语法简要" class="headerlink" title="SQL语法简要"></a>SQL语法简要</h2><h3 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="keyword">test</span>;</span><br><span class="line"><span class="keyword">USE</span> <span class="keyword">test</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  col1 <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">1</span>,</span><br><span class="line">  col2 <span class="built_in">VARCHAR</span>(<span class="number">45</span>) <span class="literal">NULL</span>,</span><br><span class="line">  col3 <span class="built_in">DATE</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="修改表"><a href="#修改表" class="headerlink" title="修改表"></a>修改表</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> mytable <span class="keyword">ADD</span> <span class="keyword">col</span> <span class="built_in">CHAR</span>(<span class="number">20</span>);<span class="comment">-- 添加列</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> mytable <span class="keyword">DROP</span> <span class="keyword">COLUMN</span> <span class="keyword">col</span>;<span class="comment">-- 删除列</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> mytable;<span class="comment">-- 删除表</span></span><br></pre></td></tr></table></figure>
+<h3 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> mytable(col1, col2) <span class="keyword">VALUES</span>(val1, val2);<span class="comment">-- 插入数据</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> mytable1(col1, col2) <span class="keyword">SELECT</span> col1, col2 <span class="keyword">FROM</span> mytable2;<span class="comment">-- 从一个表获取数据插入到另一个表</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> newtable <span class="keyword">AS</span> <span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable;<span class="comment">-- 从一个表获取数据建立新的表</span></span><br></pre></td></tr></table></figure>
+<h3 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> mytable <span class="keyword">SET</span> <span class="keyword">col</span> = val <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">id</span> = <span class="number">1</span>;<span class="comment">-- 删除一行</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> mytable;<span class="comment">-- 清空整张表</span></span><br></pre></td></tr></table></figure>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># DISTINCT: 相同值只会出现一次。它作用于所有列，也就是说所有列的值都相同才算相同。</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> col1, col2 <span class="keyword">FROM</span> mytable;</span><br><span class="line"></span><br><span class="line"><span class="comment"># LIMIT: 限制返回的行数。第一个参数为起始行，不写的话默认从 0 开始；第二个参数为返回的总行数。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">LIMIT</span> <span class="number">5</span>;<span class="comment">-- 返回前 5 行，省略第一个参数</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">LIMIT</span> <span class="number">0</span>, <span class="number">5</span>;<span class="comment">-- 返回前 5 行</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">LIMIT</span> <span class="number">2</span>, <span class="number">3</span>;<span class="comment">-- 返回第 3 ~ 5 行</span></span><br></pre></td></tr></table></figure>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ORDERBY 的字段，越靠前的字段，排序优先级越高。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">ORDER</span> <span class="keyword">BY</span> col1 <span class="keyword">DESC</span>, col2 <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="过滤"><a href="#过滤" class="headerlink" title="过滤"></a>过滤</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># WHERE 可用的条件符号有=、&lt;、&gt;、!=或&lt;&gt;、&lt;=或!&gt;、&gt;=或!&lt;、BETWEEN、IS NULL</span></span><br><span class="line"><span class="comment"># AND 和 OR 用于连接多个过滤条件。IN 用于匹配一组值，其后也可以接一个 SELECT 子句。NOT 操作符用于否定一个条件。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">col</span> <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="通配符"><a href="#通配符" class="headerlink" title="通配符"></a>通配符</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 Like 进行通配符匹配。% 匹配任意个字符，_ 匹配 1 个任意字符，[] 匹配集合内的字符， ^ 可以对其进行否定，也就是不匹配集合内的字符。</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">col</span> <span class="keyword">LIKE</span> <span class="string">'[^AB]%'</span>; <span class="comment">-- 不以 A 和 B 开头的任意文本</span></span><br></pre></td></tr></table></figure>
+<h3 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> col1 * col2 <span class="keyword">AS</span> <span class="keyword">alias</span> <span class="keyword">FROM</span> mytable;<span class="comment">-- AS 用于取别名</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CONCAT</span>(<span class="keyword">TRIM</span>(col1), <span class="string">'('</span>, <span class="keyword">TRIM</span>(col2), <span class="string">')'</span>) <span class="keyword">AS</span> concat_col <span class="keyword">FROM</span> mytable;<span class="comment">-- CONCAT 用于拼接字段，TRIM 用于去除首尾空格</span></span><br></pre></td></tr></table></figure>
+<h3 id="内置函数"><a href="#内置函数" class="headerlink" title="内置函数"></a>内置函数</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="keyword">DISTINCT</span> col1) <span class="keyword">AS</span> avg_col <span class="keyword">FROM</span> mytable;</span><br></pre></td></tr></table></figure>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span>, <span class="keyword">COUNT</span>(*) <span class="keyword">AS</span> <span class="keyword">num</span> <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">col</span> &gt; <span class="number">2</span> <span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="keyword">col</span> <span class="keyword">HAVING</span> <span class="keyword">num</span> &gt;= <span class="number">2</span>;</span><br><span class="line"><span class="comment"># 先用 WHERE 筛选 col 列的值</span></span><br><span class="line"><span class="comment"># 再用 GROUP BY 对筛选出的值分组，把相同的值归为一组，如果没有 GROUP BY ，默认所有结果是一组</span></span><br><span class="line"><span class="comment"># 最后用 HAVING 对 SELECT 的结果做筛选</span></span><br></pre></td></tr></table></figure>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 子查询中只能返回一个字段的数据</span></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> mytable1 <span class="keyword">WHERE</span> col1 <span class="keyword">IN</span> (<span class="keyword">SELECT</span> col2 <span class="keyword">FROM</span> mytable2);</span><br></pre></td></tr></table></figure>
+<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 连接可以替代子查询，比子查询效率高，语法也更精简</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 内连接：仅保留满足等值判断的行</span></span><br><span class="line"><span class="keyword">SELECT</span> A.value, B.value <span class="keyword">FROM</span> tablea <span class="keyword">AS</span> A <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tableb <span class="keyword">AS</span> B <span class="keyword">ON</span> A.key = B.key;</span><br><span class="line"><span class="keyword">SELECT</span> A.value, B.value <span class="keyword">FROM</span> tablea <span class="keyword">AS</span> A, tableb <span class="keyword">AS</span> B <span class="keyword">WHERE</span> A.key = B.key;<span class="comment">-- 没写INNER JOIN，默认就是内连接</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自连接：与自己的内连接</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">name</span> <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> department = ( <span class="keyword">SELECT</span> department <span class="keyword">FROM</span> employee <span class="keyword">WHERE</span> <span class="keyword">name</span> = <span class="string">"Jim"</span>);<span class="comment">-- 子查询写法</span></span><br><span class="line"><span class="keyword">SELECT</span> e1.name <span class="keyword">FROM</span> employee <span class="keyword">AS</span> e1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> employee <span class="keyword">AS</span> e2 <span class="keyword">ON</span> e1.department = e2.department <span class="keyword">AND</span> e2.name = <span class="string">"Jim"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 自然连接：内连接的特例，不指定连接的列，默认把两个表所有同名列都连接起来</span></span><br><span class="line"><span class="keyword">SELECT</span> A.value, B.value <span class="keyword">FROM</span> tablea <span class="keyword">AS</span> A <span class="keyword">NATURAL</span> <span class="keyword">JOIN</span> tableb <span class="keyword">AS</span> B;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 外连接：保留满足等值判断的行，同时选择性地保留不满足等值判断的行。根据保留哪张表，可以分为左外连接、右外连接和全外连接</span></span><br><span class="line"><span class="keyword">SELECT</span> Customers.cust_id, Customer.cust_name, Orders.order_id <span class="keyword">FROM</span> Customers <span class="keyword">LEFT</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> Orders <span class="keyword">ON</span> Customers.cust_id = Orders.cust_id;</span><br></pre></td></tr></table></figure>
+<h3 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把两条查询语句的结果纵向拼接在一起(横向的叫连接)</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">col</span> <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">col</span> = <span class="number">1</span> <span class="keyword">UNION</span> <span class="keyword">SELECT</span> <span class="keyword">col</span> <span class="keyword">FROM</span> mytable <span class="keyword">WHERE</span> <span class="keyword">col</span> =<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 视图是虚拟的表，用于简化SQL操作。此外，通过只给用户访问视图的权限，可以保证数据的安全性。</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> myview <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">Concat</span>(col1, col2) <span class="keyword">AS</span> concat_col, col3*col4 <span class="keyword">AS</span> compute_col</span><br><span class="line"><span class="keyword">FROM</span> mytable</span><br><span class="line"><span class="keyword">WHERE</span> col5 = val;</span><br></pre></td></tr></table></figure>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 相当于自定义批处理函数，实现代码复用</span></span><br><span class="line"><span class="comment"># 定义存储过程之前要使用 delimiter 修改分隔符，让命令行忽视掉其中的分号，定义完还要把分隔符改回分号</span></span><br><span class="line"><span class="comment"># 包含 in、out 和 inout 三种参数。给变量赋值都需要用 select into 语句。</span></span><br><span class="line"></span><br><span class="line">delimiter //</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> myprocedure( <span class="keyword">out</span> ret <span class="built_in">int</span> )</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">declare</span> y <span class="built_in">int</span>;</span><br><span class="line">        <span class="keyword">select</span> <span class="keyword">sum</span>(col1)</span><br><span class="line">        <span class="keyword">from</span> mytable</span><br><span class="line">        <span class="keyword">into</span> y;</span><br><span class="line">        <span class="keyword">select</span> y*y <span class="keyword">into</span> ret;</span><br><span class="line">    <span class="keyword">end</span> //</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">call</span> myprocedure(@ret);</span><br><span class="line"><span class="keyword">select</span> @ret;</span><br></pre></td></tr></table></figure>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在存储过程中使用游标可以对一个结果集进行移动遍历</span></span><br><span class="line"></span><br><span class="line">delimiter //</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> myprocedure(<span class="keyword">out</span> ret <span class="built_in">int</span>)</span><br><span class="line">    <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">declare</span> done <span class="built_in">boolean</span> <span class="keyword">default</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment"># 定义游标</span></span><br><span class="line">        <span class="keyword">declare</span> mycursor <span class="keyword">cursor</span> <span class="keyword">for</span> <span class="keyword">select</span> col1 <span class="keyword">from</span> mytable;</span><br><span class="line">        <span class="comment"># 定义了一个 continue handler，当 sqlstate '02000' 这个条件出现时，会执行 set done = 1 ，用于退出下面的 repeat 循环</span></span><br><span class="line">        <span class="keyword">declare</span> continue <span class="keyword">handler</span> <span class="keyword">for</span> <span class="keyword">sqlstate</span> <span class="string">'02000'</span> <span class="keyword">set</span> done = <span class="number">1</span>;</span><br><span class="line">        <span class="comment"># 打开游标</span></span><br><span class="line">        open mycursor;</span><br><span class="line">        repeat</span><br><span class="line">            <span class="comment"># 根据游标取数据</span></span><br><span class="line">            fetch mycursor into ret;</span><br><span class="line">            <span class="keyword">select</span> ret;</span><br><span class="line">        until done <span class="keyword">end</span> <span class="keyword">repeat</span>;</span><br><span class="line">        <span class="comment"># 关闭游标</span></span><br><span class="line">        close mycursor;</span><br><span class="line">    <span class="keyword">end</span> //</span><br><span class="line"> delimiter ;</span><br></pre></td></tr></table></figure>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># DELETE、INSERT、UPDATE 三种操作可以绑定触发器，BEFORE 和 AFTER 用于指定触发时机</span></span><br><span class="line"><span class="comment"># MySQL 不允许在触发器中使用 CALL 语句，也就是不能调用存储过程。</span></span><br><span class="line"><span class="comment"># INSERT 触发器包含一个名为 NEW 的虚拟表，DELETE 触发器包含一个名为 OLD 的虚拟表，UPDATE 触发器同时包含了 NEW 和 OLD 。其中 NEW 可以读写，而 OLD 是只读的。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> mytrigger <span class="keyword">AFTER</span> <span class="keyword">INSERT</span> <span class="keyword">ON</span> mytable <span class="keyword">FOR</span> <span class="keyword">EACH</span> <span class="keyword">ROW</span> <span class="keyword">SELECT</span> NEW.col <span class="keyword">into</span> @<span class="keyword">result</span>;</span><br><span class="line"><span class="keyword">SELECT</span> @<span class="keyword">result</span>; <span class="comment">-- 获取结果</span></span><br></pre></td></tr></table></figure>
+<h3 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># BEGIN 或 START TRANSACTION 显式地开启一个事务，COMMIT 提交事务，ROLLBACK 回滚事务，SAVEPOINT identifier 创建回滚的锚点</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span></span><br><span class="line">// ...</span><br><span class="line"><span class="keyword">SAVEPOINT</span> delete1</span><br><span class="line">// ...</span><br><span class="line"><span class="keyword">ROLLBACK</span> <span class="keyword">TO</span> delete1</span><br><span class="line">// ...</span><br><span class="line"><span class="keyword">COMMIT</span></span><br></pre></td></tr></table></figure>
+<h3 id="字符集"><a href="#字符集" class="headerlink" title="字符集"></a>字符集</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># CHARACTER 可以分别对字段和整张表指定字符集，COLLATE 用于指定排序规则，比如 latin1_general_ci 就是 latin 字符集下的一种排序规则。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> mytable (<span class="keyword">col</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> latin <span class="keyword">COLLATE</span> latin1_general_ci ) <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> hebrew <span class="keyword">COLLATE</span> hebrew_general_ci;</span><br></pre></td></tr></table></figure>
+<h3 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># MySQL 的账户信息保存在 mysql 数据库中。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> myuser <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'mypassword'</span>;</span><br><span class="line"><span class="keyword">RENAME</span> <span class="keyword">USER</span> myuser <span class="keyword">TO</span> newuser;<span class="comment">-- 修改用户名户</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> myuser;-</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">GRANTS</span> <span class="keyword">FOR</span> myuser;<span class="comment">-- 查看权限</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span> <span class="keyword">ON</span> mydatabase.* <span class="keyword">TO</span> myuser;<span class="comment">-- 授予权限</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span> <span class="keyword">ON</span> mydatabase.* <span class="keyword">FROM</span> myuser;<span class="comment">-- 删除权限</span></span><br><span class="line"><span class="keyword">SET</span> PASSWROD <span class="keyword">FOR</span> myuser = <span class="keyword">Password</span>(<span class="string">'new_password'</span>);<span class="comment">-- 更改密码，必须使用 Password() 函数进行加密</span></span><br></pre></td></tr></table></figure>
+<h2 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h2><h3 id="MyISAM-amp-InnoDB"><a href="#MyISAM-amp-InnoDB" class="headerlink" title="MyISAM &amp; InnoDB"></a>MyISAM &amp; InnoDB</h3><ul>
+<li>MyISAM 只有表级锁，InnoDB 支持行级锁和表级锁，默认为行级锁。</li>
+<li>MyISAM 不一定比 InnoDB 快。</li>
+<li>MyISAM 支持全文检索，但5.6之后InnoDB也支持了。</li>
+<li>InnoDB 支持事务。</li>
+<li>InnoDB 支持外键。</li>
+<li>InnoDB 支持MVCC。</li>
+<li>InnoDB 支持在线热备份。</li>
+</ul>
+<h3 id="表级锁-amp-行级锁"><a href="#表级锁-amp-行级锁" class="headerlink" title="表级锁 &amp; 行级锁"></a>表级锁 &amp; 行级锁</h3><ul>
+<li><strong>表级锁</strong>：MySQL中锁定粒度最大的一种锁，实现简单，资源消耗也比较少，加锁快，不会出现死锁 。但触发锁冲突的概率最高，并发度最低。</li>
+<li><strong>行级锁</strong>：MySQL中锁定粒度最小的一种锁，能大大减少锁冲突，提高并发度。但加锁开销大，加锁慢，会出现死锁。 InnoDB支持三种行级锁：<ul>
+<li><strong>Record Lock</strong>: 对索引项加锁，锁定符合条件的行。</li>
+<li><strong>Gap Lock</strong>: 对索引项之间的间隙加锁，锁定记录的范围，不包含索引项本身。其他事务不能在锁范围内插入数据，这样就避免了幻影读。</li>
+<li><strong>Next-key Lock</strong>： 锁定索引项本身和索引范围。即Record Lock和Gap Lock的结合。可避免幻影读。</li>
+</ul>
+</li>
+</ul>
+<h3 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h3><ul>
+<li><strong>单表优化</strong>：不要一开始就考虑拆分，拆分会带来逻辑、部署、运维的各种复杂度。一般以整型值为主的表在千万级以下，字符串为主的表在五百万以下是没有太大问题的。<ul>
+<li><strong>字段</strong>：<ul>
+<li>尽量使用TINYINT、SMALLINT、MEDIUM_INT而非INT</li>
+<li>VARCHAR只分配需要的长度</li>
+<li>使用枚举或整数代替字符串类型</li>
+<li>使用TIMESTAMP而非DATETIME</li>
+<li>避免使用NULL字段，因为NULL需要更多的存储空间并且无法参与某些运算。</li>
+</ul>
+</li>
+<li><strong>索引</strong>：<ul>
+<li>索引不是越多越好，根据需要创建</li>
+<li>避免在WHERE子句进行NULL值判断，否则将导致引擎放弃使用索引而进行全表扫描$\color{red}{(存疑)}$</li>
+<li>取值有限的字段不适合建索引，比如性别</li>
+<li>字符字段只建前缀索引</li>
+<li>字符字段最好不要做主键</li>
+<li>尽量不用外键和UNIQUE，由程序保证约束</li>
+</ul>
+</li>
+<li><strong>查询语句</strong>：<ul>
+<li>不要做列运算，任何对列的操作都将导致表扫描，应该尽可能将计算移至等号右边。比如把 <code>SELECT id WHERE age+1=10</code> 改成 <code>SELECT id WHERE age=10-1</code></li>
+<li>语句尽可能简单，把大语句拆小语句，减少锁时间与锁竞争</li>
+<li>不用 <code>SELECT *</code></li>
+<li>不用函数和触发器，在应用程序上实现</li>
+<li>少用 JOIN</li>
+<li>尽量不在WHERE子句中使用!=或&lt;&gt;，否则将导致引擎放弃使用索引而进行全表扫描$\color{red}{(存疑)}$</li>
+<li>对于连续数值的范围，使用BETWEEN而非IN</li>
+<li>不要一次读整张表，要使用LIMIT来分页</li>
+</ul>
+</li>
+<li><strong>引擎</strong>：MyISAM适合SELECT密集型的表，而InnoDB适合INSERT和UPDATE密集型的表</li>
+</ul>
+</li>
+<li><strong>读写分离</strong>：从库负责读，主库负责写，一般不要采用双主或多主引入很多复杂性。</li>
+<li><strong>缓存</strong>：<ul>
+<li><strong>MySQL内部</strong>：调整缓存相关的系统调优参数</li>
+<li><strong>数据访问层</strong>：比如MyBatis针对SQL语句做缓存，而Hibernate可以精确到单个记录，这里缓存的对象主要是持久化对象</li>
+<li><strong>应用服务层</strong>：通过编程手段对缓存做到更精准的控制和更多的实现策略，这里缓存的对象是数据传输对象</li>
+<li><strong>Web层</strong>：针对web页面做缓存</li>
+<li><strong>客户端</strong>：浏览器的缓存</li>
+</ul>
+</li>
+<li><strong>垂直拆分</strong>：把一个多字段的大表按常用字段和非常用字段进行拆分，每个表的行数相同，只是字段不一样，使用主键关联。<ul>
+<li>优点：<ul>
+<li>可以使单行数据变小，一个数据块(Block)能存放更多的数据，在查询时就会减少I/O次数(每次查询需要读取的Block变少)</li>
+<li>可以最大化利用Cache，因为不需要保存非常用字段</li>
+<li>数据维护简单</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>主键出现冗余，需要管理冗余列</li>
+<li>可能需要频繁执行 JOIN 操作</li>
+<li>依然存在单表数据量(行数)过大的问题</li>
+<li>事务处理复杂，因为要处理多个表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>水平拆分</strong>：把一个行数多的大表拆成多个行数少的表，每个表的字段完全一样。有库内分表和分库两种实现，库内分表仅仅解决了单一表数据过大的问题，由于没有把多个表分布到不同的机器上，对于减轻MySQL服务器的压力来说没有太大帮助。<ul>
+<li>优点：<ul>
+<li>不存在单库大数据和高并发的性能瓶颈</li>
+<li>提高了系统的稳定性和负载能力</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>分片事务一致性难以解决</li>
+<li>跨节点Join性能差，逻辑复杂</li>
+<li>数据多次扩展难度跟维护量极大</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数据库连接池"><a href="#数据库连接池" class="headerlink" title="数据库连接池"></a>数据库连接池</h3><ul>
+<li>数据库连接本质上就是一个 socket 的连接。与线程池类似，数据库连接池就是数据库连接的缓存，收到对数据库的连接请求时可以重用这些连接。为每个新用户都创建和维护数据库连接，代价昂贵、浪费资源，用户还必须浪费时间先等待与数据库建立连接。在连接池中，可以复用旧的连接，因而大大降低了创建新连接的频率。</li>
+</ul>
+<h3 id="MySQL-基础架构"><a href="#MySQL-基础架构" class="headerlink" title="MySQL 基础架构"></a>MySQL 基础架构</h3><ul>
+<li><strong>Connectors</strong>：负责通过MySQL协议与MySQL Server建立TCP连接，一般都是调用各个编程语言的SDK，比如JDBC。</li>
+<li><strong>Connection Management</strong>：MySQL会为每一个客户端连接绑定一个管理线程，通常会使用线程池。管理线程负责管理客户端链接，对客户端进行认证，认证基于用户名、主机名、密码。如果用了SSL或者TLS的方式进行连接，还会进行证书认证。</li>
+<li><strong>SQL Interface</strong>：负责提供 DML(数据操作语言)、DDL(数据定义语言)、存储过程、视图、触发器、自定义函数等SQL语言接口。</li>
+<li><strong>Parser</strong>：负责解析SQL语句，并为其创建语法树，同时验证该客户端是否具有执行该操作的权限。还会对SQL查询语句做语法优化，进行查询重写。</li>
+<li><strong>Optimizer</strong>：语法解析和查询重写之后，MySQL会根据语法树和数据的统计信息对SQL进行优化，包括决定表的读取顺序、选择合适的索引等，最终生成SQL的具体执行步骤。</li>
+<li><strong>Caches &amp; Buffers</strong>：缓存 SELECT 语句以及该语句的结果集，MySQL 8.0 版本删除缓存功能，可能是觉得没什么用吧。</li>
+<li><strong>Pluggable Storage Engine</strong>：存储引擎的具体实现，这些存储引擎都实现了MySQL定义好的存储引擎API的部分或者全部。MySQL可以动态安装或移除存储引擎，可以有多种存储引擎同时存在。存储引擎负责在文件系统之上，管理表的数据、索引、Cache、Buffer、事务、Log等数据和功能。</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/887d0d42b7e0c205b771/db8.png" alt=""></p>
+<h3 id="SQL语句的执行过程"><a href="#SQL语句的执行过程" class="headerlink" title="SQL语句的执行过程"></a>SQL语句的执行过程</h3><ul>
+<li><strong>建立连接</strong>：SQL客户端与与服务器建立TCP连接，该请求被发送到Connection Management ，连接成功后会验证权限等。MySQL服务器与客户端之间的通信是半双工的。</li>
+<li><strong>查询缓存</strong>：MySQL8.0 以前缓存功能，如果查询命中缓存(哈希查找)则直接返回结果，返回结果前还会检查一次用户权限。如果没有命中缓存，则进行SQL解析。</li>
+<li><strong>语法解析器和预处理</strong>：Parser 通过MySQL关键字解析语句，生成语法解析树，检查是否有语法错误。预处理器则根据MySQL的规则进一步检查语法，如库表是否存在、字段是否存在等。</li>
+<li><strong>查询优化器</strong>：SQL语句在 Optimizer 中转换成执行计划，一条SQL语句可以有多种方式执行，不同查询方式的性能和效果不同，Optimizer 的作用就是选择合适的执行计划。MySQL使用基于成本的优化器，通常是选择成本最小的方案。</li>
+<li><strong>执行计划</strong>：MySQL的执行计划实际上是一颗指令树，存储引擎自底向上执行指令并返回结果。</li>
+<li><strong>执行SQL</strong>：在解析和优化阶段，MySQL生成了执行计划，由执行计划调用存储引擎的API来执行相应操作，最后将结果返回给客户端。</li>
+<li><strong>更新语句</strong>：相比于查询语句，INSERT、UPDATE、DELETE等语句还会修改数据，修改过程需要用到存储引擎的日志模块。MySQL 自带的日志模块是 binlog(归档日志)，InnoDB 的日志模块是 redo log(重做日志)，修改数据同时用到了这两个模块，大致流程是：<ul>
+<li>先获取要修改的数据，其实就是查询语句。</li>
+<li>调用引擎 API 接口修改数据，同时记录 redo log，此时 redo log 进入 prepare 状态，然后通知执行器可以提交了。</li>
+<li>执行器收到通知后记录 binlog，然后调用引擎接口提交， redo log 变为提交状态。</li>
+<li>因为 InnoDB 需要通过 redo log 来支持事务，MySQL 底层又必须使用原生的 binlog，所以两个模块只能都使用。</li>
+<li>之所以采用“记录redo log-&gt;记录binlog-&gt;提交binlog-&gt;提交redo log” 这样的<strong>两段式提交</strong>，是为了保证两个日志要么都提交要么都不提交，如果机器恰好在两个日志提交的间隔挂掉了，机器重启后MySQL将根据两个日志的状态和完整性来决定是否提交。总之，两段式提交+MySQL异常处理机制，可以保证数据一致性。</li>
+</ul>
+</li>
+</ul>
+<p><img src= "/img/loading.gif" data-src="https://file.shivakasu.cn/90edb6a4d90b2341b582/db10.jpg" alt=""></p>
+<h3 id="一条SQL语句执行得很慢的原因有哪些？"><a href="#一条SQL语句执行得很慢的原因有哪些？" class="headerlink" title="一条SQL语句执行得很慢的原因有哪些？"></a>一条SQL语句执行得很慢的原因有哪些？</h3><ul>
+<li>大多数情况下很正常，偶尔很慢<ul>
+<li><strong>数据库在刷新脏页</strong><ul>
+<li>数据库的更新并不会立即同步持久化到磁盘中去，而是先把这些更新写入到 redo log 日志中，等到系统空闲时再通过 redo log 把最新数据同步到磁盘。当内存数据页跟磁盘数据页内容不一致时，就称这个内存页为“脏页”，内存数据页是新数据，磁盘上的是旧数据，所以刷新脏页就是把内存的数据写到磁盘。</li>
+<li>如果系统不空闲时还在疯狂刷新脏页，一般有两种可能。一是 redo log 满了，系统必须暂停其他操作，专心同步数据。二是内存满了，系统需要淘汰一部分内存数据页，如果其中恰好有大量脏页，就要在淘汰前先写到磁盘。</li>
+</ul>
+</li>
+<li><strong>执行的时候遇到锁</strong>。</li>
+</ul>
+</li>
+<li>一直就很慢<ul>
+<li><strong>没有用上索引</strong>。分两种情况：<ul>
+<li>本来就没有给字段添加索引。</li>
+<li>字段有索引，但由于一些特殊情况(上面的大表优化里写了)，系统放弃使用索引，进行全表扫描。</li>
+</ul>
+</li>
+<li><strong>数据库选错了索引</strong>。<ul>
+<li>主键索引存放的值是整行字段的数据，而非主键索引上存放的值不是整行字段的数据，而是存放主键字段的值。</li>
+<li>当使用非主键索引时，会查询到对应主键的值，然后再根据主键的值使用主键索引，查询到整行数据返回。当满足查询条件的行数超过一定比例时，这种索引查询有可能比直接扫描全表还要慢。所以在执行查询语句时，系统会预先估计到底是使用索引快还是扫描全表快，因此就算有索引系统也不一定会用到。</li>
+<li>系统是通过索引的区分度来判断的，一个索引上不同的值越多，意味着出现相同数值的索引越少，意味着索引的区分度越高。所以索引的基数越大，意味着走索引查询越有优势。然而系统是通过采样来估计索引区分度的，如果采样的结果刚好基数很小，系统就会放弃使用索引。所以为了避免这种统计失误，最好在查询语句中强制使用索引。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><ul>
+<li>索引是一种用于快速查询和检索数据的数据结构。常见的索引结构有B树、B+树和Hash。使用索引可以大大提升数据检索速度，但代价是创建和维护索引的耗时，以及存储索引的额外空间。</li>
+<li>索引是在<strong>存储引擎层实现</strong>的，而不是在服务器层实现的，所以不同存储引擎具有不同的索引类型和实现。</li>
+<li><strong>索引的原理</strong>：数据库里的数据默认采用无序链表的结构进行组织，使用索引后，不仅可以把数据按顺序组织，还采用了搜索效率更高的树结构。但具体有没有用树结构直接替换原来的链表结构，要看存储引擎的内部实现。</li>
+<li>Inodb存储引擎默认是B+ 树索引，MyISAM 存储引擎默认是Fulltext索引，Memory 存储引擎默认是Hash索引。</li>
+<li><strong>B树 &amp; B+树</strong>：<ul>
+<li>都是有序的平衡多叉树。</li>
+<li>B树的所有节点既存放key也存放data。B+树只有叶节点存放 key 和 data，非叶节点只存放key。</li>
+<li>B树的叶节点都是独立的。B+树的叶节点有一条引用链指向与它相邻的叶节点(经典B+树是没有顺序访问指针的，数据库使用的B+树是对经典的优化)。</li>
+<li>B树的检索的过程相当于对范围内的每个节点的关键字做二分查找，可能还没有到达叶节点，检索就结束了。而B+树的检索效率就很稳定，任何查找都是从根节点到叶子节点的过程。</li>
+</ul>
+</li>
+<li><strong>为什么不使用二叉树作为索引结构?</strong>：<ul>
+<li>平衡二叉树、红黑树等结构是常用的排序树，但要索引存储在磁盘上的数据时，他们都不适合，就是因为分叉少(也就是节点出度小)。</li>
+<li>一方面，数据库的数据量很大，当节点数量相同时，二叉树的高度比多叉树高很多，当高度差距到一定程度时，二叉树的查找效率就不如多叉树了。</li>
+<li>另一方面，整棵索引树通常是很大的，存储在磁盘上，通常每次只能从磁盘中读取一个磁盘页的数据到内存中，这种情况下，磁盘I/O会成为主要的性能瓶颈。由于考虑到局部性原理，系统每次读取一个磁盘页的数据时都会顺便把其相邻的数据也读到内存中，这叫做磁盘局部预读。树结构在磁盘中是按照层次顺序存储在一维数组中的，也就意味着数组中相邻的节点就是树的某一层的相邻节点。树的分支越少，树的高度就越高，对于排序树而言，就会导致高层里相邻的两个节点往往在实际顺序中相距很远。因此，如果用二叉树作为索引，局部预读读到的相邻索引节点实际距离很大，结果反而与局部性原理背道而驰，使得系统读取了非局部数据，需要更频繁的磁盘I/O操作来置换内存中的数据。</li>
+</ul>
+</li>
+<li><strong>为什么B+树比B树更适合作为索引结构？</strong><ul>
+<li>二叉树没能充分利用磁盘预读功能，而B树和B+树都是为了充分利用磁盘预读功能而创建的一种数据结构。</li>
+<li>如果想遍历数据库中连续的一段数据，基于B树需要中序遍历，而基于B+树只需要沿着指针扫一段叶节点。在数据库中基于范围的查询是非常频繁的，所以采用B+树的主要原因是B树在提高了磁盘IO性能的同时并没有解决元素遍历效率低下的问题。</li>
+</ul>
+</li>
+<li><strong>为什么B+树比Hash表更适合作为索引结构？</strong><ul>
+<li>Hash表的优点是定位数据快。</li>
+<li>Hash表的小缺点是哈希碰撞，但并不会十分影响查询效率。</li>
+<li>Hash表的最大缺点是不支持顺序和范围查询，B树好歹只是效率低，而Hash表直接就不支持了。</li>
+</ul>
+</li>
+<li><strong>索引类型</strong>：<ul>
+<li>主键索引：主键列使用的就是主键索引。</li>
+<li>二级索引：二级索引的叶子节点存储的data是主键，所以二级索引用于定位主键的位置，定位数据还需要通过主键索引。</li>
+<li>聚簇索引：聚簇索引是索引结构和数据一起存放的索引，所以主键索引属于聚簇索引。<ul>
+<li>优点：查询速度非常快，定位到索引节点就同时定位到了数据。</li>
+<li>缺点：依赖于有序的数据，如果索引的数据不是有序的，就需要在插入时排序。更新代价大，数据和索引必须同时修改。</li>
+</ul>
+</li>
+<li>非聚簇索引：非聚簇索引即索引结构和数据分开存放的索引，所以二级索引属于非聚簇索引。<ul>
+<li>优点：更新代价比聚簇索引要小。</li>
+<li>缺点：也依赖于有序的数据。需要二次查询，即先定位主键再定位数据，但有些特殊情况只需要查询一次，比如key和data相同，或者查询的就是主键而不是数据。</li>
+</ul>
+</li>
+<li>覆盖索引：如果一个索引包含所有需要查询的字段的值，就称之为覆盖索引，其实就是上面说的key和data相同的情况。</li>
+</ul>
+</li>
+<li><strong>最左前缀原则</strong>：使用联合索引(多列属性组成的索引)时，尽量把查询最频繁的字段作为最左(第一个)字段，查询的时候也尽量以这个字段为第一条件。</li>
+<li><strong>MyISAM &amp; InnoDB</strong>:<ul>
+<li>MyISAM 的索引文件和数据文件是分离的，采用非聚簇索引，叶节点的data域存放的是数据记录的地址。</li>
+<li>InnoDB 的数据文件本身就是按B+树结构组织的，所以索引文件和数据文件是一体的。采用聚簇索引，叶节点的data域存放的是数据的值而不是地址。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2></div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:wkx1996@foxmail.com">w.k.x.</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shivakasu.cn/2017/01/26/interview4/">https://shivakasu.cn/2017/01/26/interview4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shivakasu.cn" target="_blank">SHIVAKASU</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></div><div class="post_share"><div class="social-share" data-image="http://file.shivakasu.cn/2f6de001e698ed5939de/arg.jpg" data-sites="facebook,twitter,wechat,weibo,qq,qzone,douban,google,linkedin"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"/><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js"></script></div></div><div class="post-reward"><button class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><img class="post-qr-code__img" src="https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png" alt="微信" onclick="window.open('https://file.shivakasu.cn/4a84dcfb31806db98b2a/wechat.png')"/><div class="post-qr-code__desc">微信</div></li><li class="reward-item"><img class="post-qr-code__img" src="https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg" alt="支付宝" onclick="window.open('https://file.shivakasu.cn/982f781ef31cbc46968b/alipay.jpg')"/><div class="post-qr-code__desc">支付宝</div></li></ul></div></button></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2017/01/27/interview3/"><img class="prev-cover" data-src="https://file.shivakasu.cn/2e594da7dae7aed97c58/python.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">无聊的知识点之 Python</div></div></a></div><div class="next-post pull-right"><a href="/2017/01/26/interview2/"><img class="next-cover" data-src="https://file.shivakasu.cn/43003cda4506046a2bdd/design.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">无聊的知识点之设计模式</div></div></a></div></nav><div class="relatedPosts"><div class="relatedPosts_headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts_list"><div class="relatedPosts_item"><a href="/2020/01/10/arg0/" title="《程序员代码面试指南》"><img class="relatedPosts_cover" data-src="http://file.shivakasu.cn/5f37cb297aa622ca620e/interview0.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2020-01-10</div><div class="relatedPosts_title">《程序员代码面试指南》</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/24/interview0/" title="无聊的知识点之系统"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/48b4c92f979726d97437/cs.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-24</div><div class="relatedPosts_title">无聊的知识点之系统</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/27/interview3/" title="无聊的知识点之 Python"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/2e594da7dae7aed97c58/python.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-27</div><div class="relatedPosts_title">无聊的知识点之 Python</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/28/interview5/" title="无聊的知识点之大数据"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/f9090341835f7511eae5/bigdata.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-28</div><div class="relatedPosts_title">无聊的知识点之大数据</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/26/interview2/" title="无聊的知识点之设计模式"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/43003cda4506046a2bdd/design.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-26</div><div class="relatedPosts_title">无聊的知识点之设计模式</div></div></a></div><div class="relatedPosts_item"><a href="/2017/01/25/interview1/" title="无聊的知识点之 Java"><img class="relatedPosts_cover" data-src="https://file.shivakasu.cn/47ac8cadfbd9da344fc9/java.jpg"><div class="relatedPosts_main is-center"><div class="relatedPosts_date"><i class="far fa-calendar-alt fa-fw"></i> 2017-01-25</div><div class="relatedPosts_title">无聊的知识点之 Java</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment_headling"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div><div class="vcomment" id="vcomment"></div><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var requestSetting = function (from,set) {
+  var from = from
+  var setting = set.split(',').filter(function(item){
+  return from.indexOf(item) > -1
+  });
+  setting = setting.length == 0 ? from :setting;
+  return setting
+}
+
+var guestInfo = requestSetting(['nick','mail','link'],'nick,mail,link')
+var requiredFields = requestSetting(['nick','mail'],'nick,mail')
+
+window.valine = new Valine({
+  el:'#vcomment',
+  appId: 'qIfwEiuSjlc5vyminB1rx2qX-gzGzoHsz',
+  appKey: 'erfVXuW3AybzbWGqxSGxnBRp',
+  placeholder: '来都来了，说点儿什么吧~',
+  avatar: 'monsterid',
+  meta: guestInfo,
+  pageSize: '10',
+  lang: 'zh-CN',
+  recordIP: true,
+  serverURLs: '',
+  emojiCDN: '',
+  emojiMaps: "",
+  enableQQ: false,
+  requiredFields: requiredFields
+});</script></div></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By w.k.x.</div><div class="framework-info"><span>DrivenBy </span><a href="https://hexo.io" target="_blank" rel="noopener"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener"><span>Butterfly</span></a></div><div class="icp"><a href="http://www.beian.miit.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="noopener"><img class="icp-icon" src="/img/icp.png"/><span>京ICP备19001969号-1</span></a></div></div></footer></div><section class="rightside" id="rightside"><div id="rightside-config-hide"><button id="readmode" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font_plus" title="放大字体"><i class="fas fa-plus"></i></button><button id="font_minus" title="缩小字体"><i class="fas fa-minus"></i></button><button class="translate_chn_to_cht" id="translateLink" title="简繁转换">繁</button><button id="darkmode" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" title="设置"><i class="fas fa-cog"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="scroll_to_comment fas fa-comments"></i></a><button class="close" id="mobile-toc-button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+    processEscapes: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+  },
+  CommonHTML: {
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "HTML-CSS": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  },
+  "SVG": { 
+    linebreaks: { automatic: true, width: "90% container" }
+  }
+});
+</script><script type="text/x-mathjax-config">MathJax.Hub.Queue(function() {
+  var all = MathJax.Hub.getAllJax(), i;
+  for (i=0; i < all.length; i += 1) {
+    all[i].SourceElement().parentNode.className += ' has-jax';
+  }
+});
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script><script src="/js/third-party/fireworks.js"></script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js" async></script><script src="https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js"></script><script>document.addEventListener('DOMContentLoaded', function() {
+  pangu.autoSpacingPage()
+})</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
